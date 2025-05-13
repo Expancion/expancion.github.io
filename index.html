@@ -9,6 +9,8 @@
   <script type="module" src="./resources/js/typewriter.js"></script>
   <script type="module" src="./resources/js/interactiveTimeLine.js"></script>
   <script type="module" src="./resources/js/animateStats.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script type="module" src="./resources/js/particlesBackground.js"></script>
   <link rel="stylesheet" href="./resources/css/main.css">
   <style>
     body {
@@ -19,6 +21,7 @@
 <body class="text-white font-sans">
 
   <!-- 🔝 Navigační menu -->
+<!-- 🔝 Navigační menu -->
 <!-- 🔝 Navigační menu -->
 <nav class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-sm z-20 shadow-md">
   <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -34,47 +37,49 @@
       </svg>
     </label>
 
-    <!-- Navigace – desktop + mobil -->
-    <div class="hidden md:flex flex-wrap justify-center gap-4 text-sm md:text-base">
-      <a href="#home" class="text-green-300 hover:text-green-400 transition">Domů</a>
-      <a href="#about" class="text-green-300 hover:text-green-400 transition">O mně</a>
-      <a href="#skills" class="text-green-300 hover:text-green-400 transition">Dovednosti</a>
-      <a href="#projects" class="text-green-300 hover:text-green-400 transition">Projekty</a>
-      <a href="#timeline" class="text-green-300 hover:text-green-400 transition">Zkušenosti</a>
-      <a href="#stats" class="text-green-300 hover:text-green-400 transition">Statistiky</a>
-      <a href="#learning" class="text-green-300 hover:text-green-400 transition">Co se učím</a>
-      <a href="#references" class="text-green-300 hover:text-green-400 transition">Doporučení</a>
-      <a href="#languages" class="text-green-300 hover:text-green-400 transition">Jazyky</a>
-      <a href="#kontakt" class="text-green-300 hover:text-green-400 transition">Kontakt</a>
+    <!-- Navigace – desktop -->
+    <div class="hidden md:flex flex-wrap justify-center gap-2 text-sm md:text-base">
+      <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Domů</a>
+      <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">O mně</a>
+      <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Dovednosti</a>
+      <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Projekty</a>
+      <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Zkušenosti</a>
+      <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Statistiky</a>
+      <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Co se učím</a>
+      <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Doporučení</a>
+      <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Jazyky</a>
     </div>
 
-    <!-- Mobilní menu -->
-    <div class="peer-checked:flex hidden absolute top-full left-0 w-full bg-black border-t border-gray-700 flex-col items-center gap-4 py-6 z-20 md:hidden text-sm">
-      <a href="#home" class="text-green-300 hover:text-green-400 transition">Domů</a>
-      <a href="#about" class="text-green-300 hover:text-green-400 transition">O mně</a>
-      <a href="#skills" class="text-green-300 hover:text-green-400 transition">Dovednosti</a>
-      <a href="#projects" class="text-green-300 hover:text-green-400 transition">Projekty</a>
-      <a href="#timeline" class="text-green-300 hover:text-green-400 transition">Zkušenosti</a>
-      <a href="#stats" class="text-green-300 hover:text-green-400 transition">Statistiky</a>
-      <a href="#learning" class="text-green-300 hover:text-green-400 transition">Co se učím</a>
-      <a href="#references" class="text-green-300 hover:text-green-400 transition">Doporučení</a>
-      <a href="#languages" class="text-green-300 hover:text-green-400 transition">Jazyky</a>
-      <a href="#kontakt" class="text-green-300 hover:text-green-400 transition">Kontakt</a>
+    <!-- Navigace – mobilní -->
+    <div class="peer-checked:flex hidden absolute top-full left-0 w-full bg-black border-t border-gray-700 flex-col items-center gap-2 py-6 z-20 md:hidden text-sm">
+      <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Domů</a>
+      <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">O mně</a>
+      <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Dovednosti</a>
+      <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Projekty</a>
+      <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Zkušenosti</a>
+      <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Statistiky</a>
+      <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Co se učím</a>
+      <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Doporučení</a>
+      <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Jazyky</a>
     </div>
-
   </div>
 </nav>
 
-  <section id="home" class="relative w-full h-screen bg-black pt-20"> <!-- pt-20 kvůli prostoru pro navbar -->
-    <img src="./resources/images/heromax.png" alt="Hero banner" class="absolute inset-0 w-full h-full object-cover opacity-50">
+  <!-- HERO sekce s částicemi -->
+  <section id="home" class="relative w-full h-screen bg-black pt-20 overflow-hidden">
 
+    <!-- 🔹 Particles Background Layer -->
+    <div id="particles-js" class="absolute inset-0 w-full h-full z-0"></div>
+
+    <!-- 🔸 Obsah sekce -->
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 id="hero-typing" class="text-4xl sm:text-5xl font-bold text-blue-300 drop-shadow-lg mb-4 min-h-[4rem]"></h1>
-        <p class="text-lg text-green-200 max-w-xl drop-shadow-md mb-6">
-            Tohle je moje digitální vizitka. Žádné šablony, jen moje práce.
-          </p>
+      <h1 id="hero-typing" class="text-4xl sm:text-5xl font-bold text-blue-300 drop-shadow-lg mb-4 min-h-[4rem]"></h1>
+      <p class="text-lg text-green-200 max-w-xl drop-shadow-md mb-6">
+        Tohle je moje digitální vizitka. Žádné šablony, jen moje práce.
+      </p>
     </div>
   </section>
+
   <section id="about" class="bg-grey-800 py-16 px-6">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-blue-400 mb-6">O mně</h2>
