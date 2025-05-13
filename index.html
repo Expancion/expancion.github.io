@@ -9,6 +9,8 @@
   <script type="module" src="./resources/js/typewriter.js"></script>
   <script type="module" src="./resources/js/interactiveTimeLine.js"></script>
   <script type="module" src="./resources/js/animateStats.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script type="module" src="./resources/js/particlesBackground.js"></script>
   <link rel="stylesheet" href="./resources/css/main.css">
   <style>
     body {
@@ -18,38 +20,63 @@
 </head>
 <body class="text-white font-sans">
 
-  <!-- 🔝 Navigační menu -->
-  <nav class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-sm z-20 shadow-md">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <!-- Název stránky -->
-      <div class="text-2xl font-bold text-blue-400">Kliment.xyz</div>
+<nav class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-sm z-20 shadow-md">
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
 
-      <!-- Navigační odkazy -->
-      <div class="flex flex-wrap justify-center gap-4 text-sm md:text-base">
-        <a href="#home" class="text-green-300 hover:text-green-400 transition">Domů</a>
-        <a href="#about" class="text-green-300 hover:text-green-400 transition">O mně</a>
-        <a href="#skills" class="text-green-300 hover:text-green-400 transition">Dovednosti</a>
-        <a href="#projects" class="text-green-300 hover:text-green-400 transition">Projekty</a>
-        <a href="#timeline" class="text-green-300 hover:text-green-400 transition">Zkušenosti</a>
-        <a href="#stats" class="text-green-300 hover:text-green-400 transition">Statistiky</a>
-        <a href="#learning" class="text-green-300 hover:text-green-400 transition">Co se učím</a>
-        <a href="#references" class="text-green-300 hover:text-green-400 transition">Doporučení</a>
-        <a href="#languages" class="text-green-300 hover:text-green-400 transition">Jazyky</a>
-        <a href="#kontakt" class="text-green-300 hover:text-green-400 transition">Kontakt</a>
-      </div>
+    <!-- Název stránky -->
+    <div class="text-2xl font-bold text-blue-400">Kliment.xyz</div>
+
+    <!-- ☰ Mobilní menu toggle -->
+    <input type="checkbox" id="nav-toggle" class="peer hidden">
+    <label for="nav-toggle" class="md:hidden text-green-300 cursor-pointer z-30">
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+    </label>
+
+    <!-- Navigace – desktop -->
+    <div class="hidden md:flex flex-wrap justify-center gap-2 text-sm md:text-base">
+      <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Domů</a>
+      <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">O mně</a>
+      <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Dovednosti</a>
+      <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Projekty</a>
+      <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Zkušenosti</a>
+      <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Statistiky</a>
+      <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Co se učím</a>
+      <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Doporučení</a>
+      <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Jazyky</a>
     </div>
-  </nav>
 
-  <section id="home" class="relative w-full h-screen bg-black pt-20"> <!-- pt-20 kvůli prostoru pro navbar -->
-    <img src="./resources/images/heromax.png" alt="Hero banner" class="absolute inset-0 w-full h-full object-cover opacity-50">
+    <!-- Navigace – mobilní -->
+    <div class="peer-checked:flex hidden absolute top-full left-0 w-full bg-black border-t border-gray-700 flex-col items-center gap-2 py-6 z-20 md:hidden text-sm">
+      <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Domů</a>
+      <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">O mně</a>
+      <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Dovednosti</a>
+      <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Projekty</a>
+      <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Zkušenosti</a>
+      <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Statistiky</a>
+      <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Co se učím</a>
+      <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Doporučení</a>
+      <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Jazyky</a>
+    </div>
+  </div>
+</nav>
 
+  <!-- HERO sekce s částicemi -->
+  <section id="home" class="relative w-full h-screen bg-black pt-20 overflow-hidden">
+
+    <!-- 🔹 Particles Background Layer -->
+    <div id="particles-js" class="absolute inset-0 w-full h-full z-0"></div>
+
+    <!-- 🔸 Obsah sekce -->
     <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-        <h1 id="hero-typing" class="text-4xl sm:text-5xl font-bold text-blue-300 drop-shadow-lg mb-4 min-h-[4rem]"></h1>
-        <p class="text-lg text-green-200 max-w-xl drop-shadow-md mb-6">
-            Tohle je moje digitální vizitka. Žádné šablony, jen moje práce.
-          </p>
+      <h1 id="hero-typing" class="text-4xl sm:text-5xl font-bold text-blue-300 drop-shadow-lg mb-4 min-h-[4rem]"></h1>
+      <p class="text-lg text-green-200 max-w-xl drop-shadow-md mb-6">
+        Tohle je moje digitální vizitka. Žádné šablony, jen moje práce.
+      </p>
     </div>
   </section>
+
   <section id="about" class="bg-grey-800 py-16 px-6">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-blue-400 mb-6">O mně</h2>
@@ -160,14 +187,7 @@
         <div>
           <div class="text-green-300 mb-1">🌐 Azure Networking</div>
           <div class="w-full h-3 bg-grey-700 rounded">
-            <div class="h-full bg-sky-600 rounded skill-bar" data-width="70%" style="width: 0%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="text-green-300 mb-1">🔐 VPN</div>
-          <div class="w-full h-3 bg-grey-700 rounded">
-            <div class="h-full bg-cyan-500 rounded skill-bar" data-width="65%" style="width: 0%"></div>
+            <div class="h-full bg-sky-600 rounded skill-bar" data-width="25%" style="width: 0%"></div>
           </div>
         </div>
 
@@ -181,21 +201,14 @@
         <div>
           <div class="text-green-300 mb-1">🧠 Cortex XDR</div>
           <div class="w-full h-3 bg-grey-700 rounded">
-            <div class="h-full bg-red-700 rounded skill-bar" data-width="55%" style="width: 0%"></div>
+            <div class="h-full bg-red-700 rounded skill-bar" data-width="35%" style="width: 0%"></div>
           </div>
         </div>
 
         <div>
           <div class="text-green-300 mb-1">👁️ Darktrace</div>
           <div class="w-full h-3 bg-grey-700 rounded">
-            <div class="h-full bg-pink-600 rounded skill-bar" data-width="50%" style="width: 0%"></div>
-          </div>
-        </div>
-
-        <div>
-          <div class="text-green-300 mb-1">🛡️ Defender XDR</div>
-          <div class="w-full h-3 bg-grey-700 rounded">
-            <div class="h-full bg-yellow-700 rounded skill-bar" data-width="60%" style="width: 0%"></div>
+            <div class="h-full bg-pink-600 rounded skill-bar" data-width="45%" style="width: 0%"></div>
           </div>
         </div>
 
@@ -391,7 +404,7 @@
       <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
   
         <div class="bg-blue-900 rounded-xl p-6 shadow-md">
-            <p class="text-4xl font-bold text-green-400 stat-number" data-target="8000" data-plus>0</p>
+            <p class="text-4xl font-bold text-green-400 stat-number" data-target="9000" data-plus>0</p>
             <p class="text-grey-300 mt-2 text-sm">podporovaných uživatelů</p>
         </div>
   
@@ -401,7 +414,7 @@
         </div>
   
         <div class="bg-blue-900 rounded-xl p-6 shadow-md">
-          <p class="text-4xl font-bold text-green-400 stat-number" data-target="12000" data-plus="">0</p>
+          <p class="text-4xl font-bold text-green-400 stat-number" data-target="20000" data-plus="">0</p>
           <p class="text-grey-300 mt-2 text-sm">spravovaných zařízení</p>
         </div>
   
@@ -440,7 +453,6 @@
           <div class="flex justify-center flex-wrap gap-2">
             <span class="bg-sky-700 text-white text-xs font-medium px-3 py-1 rounded-full">Terraform</span>
             <span class="bg-indigo-700 text-white text-xs font-medium px-3 py-1 rounded-full">Entra ID</span>
-            <span class="bg-teal-700 text-white text-xs font-medium px-3 py-1 rounded-full">Azure Policy</span>
           </div>
         </div>
   
@@ -461,7 +473,6 @@
           <div class="flex justify-center flex-wrap gap-2">
             <span class="bg-red-700 text-white text-xs font-medium px-3 py-1 rounded-full">Palo Alto Cortex</span>
             <span class="bg-pink-700 text-white text-xs font-medium px-3 py-1 rounded-full">Darktrace</span>
-            <span class="bg-grey-700 text-white text-xs font-medium px-3 py-1 rounded-full">Defender XDR</span>
           </div>
         </div>
   
@@ -478,8 +489,6 @@
       </div>
     </div>
   </section>
-  
-
 
   <section id="references" class="bg-grey-900 py-16 px-6">
     <div class="max-w-6xl mx-auto">
@@ -487,23 +496,24 @@
   
       <div class="grid gap-6 md:grid-cols-2">
   
-        <!-- Reference 1 -->
         <div class="bg-blue-900 p-6 rounded-xl shadow-md flex flex-col justify-between h-full">
           <p class="text-grey-300 text-base leading-relaxed mb-6">
-            “Martin je jeden z nejspolehlivějších lidí, se kterými jsem kdy pracoval. Nachází chytrá a praktická řešení i ve stresových situacích a jeho dokumentace šetří čas celému týmu.”
+            “Při provozu platformy v tak velké firmě, jako je Zásilkovna, musíte mít jistotu, že se můžete na své kolegy spolehnout.
+            A Martin takovým kolegou bezpochyby je. Spolupráce s ním je vždy efektivní — nezáleží na tom,
+            jestli potřebujete řešit infrastrukturu v Azure nebo pomoci přímo na depu.
+            Martin vždy ochotně přiloží ruku k dílu.”
           </p>
           <div class="flex items-center gap-3 mt-auto">
-            <p class="text-sm text-grey-400">Kolega z infrastruktury, NTT</p>
+            <p class="text-sm text-grey-400">DevOps Engineer - Packeta Innovations s.r.o.</p>
           </div>
         </div>
   
-        <!-- Reference 2 -->
         <div class="bg-blue-900 p-6 rounded-xl shadow-md flex flex-col justify-between h-full">
           <p class="text-grey-300 text-base leading-relaxed mb-6">
-            “Při provozu platformy v tak velké firmě, jako je Zásilkovna, musíte mít jistotu, že se můžete na své kolegy spolehnout. A Martin takovým kolegou bezpochyby je. Spolupráce s ním je vždy efektivní — nezáleží na tom, jestli potřebujete řešit infrastrukturu v Azure nebo pomoci přímo na depu. Martin vždy ochotně přiloží ruku k dílu.”
+            TBA
           </p>
           <div class="flex items-center gap-3 mt-auto">
-            <p class="text-sm text-grey-400">Kolega z DevOps týmu, Zásilkovna </p>
+            <p class="text-sm text-grey-400">TBA</p>
           </div>
         </div>
   
@@ -538,12 +548,10 @@
   <footer class="bg-black border-t border-grey-700 py-8 px-6 mt-16">
     <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
       
-      <!-- Text -->
       <p class="text-grey-400 text-sm text-center md:text-left">
         © 2025 Martin Kliment — Všechna práva vyhrazena
       </p>
   
-      <!-- Odkazy na sítě -->
       <div class="flex gap-4">
         <a href="https://www.linkedin.com/in/martinkliment/" target="_blank" class="text-grey-400 hover:text-blue-400 transition">
           <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24">
