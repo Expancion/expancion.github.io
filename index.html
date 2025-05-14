@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="./resources/images/favicon.png" type="image/png">
   <title>Moje stránka</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
@@ -11,6 +12,7 @@
   <script type="module" src="./resources/js/animateStats.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script type="module" src="./resources/js/particlesBackground.js"></script>
+
   <script src="./resources/js/nexusCarousel.js"></script>
   <link rel="stylesheet" href="./resources/css/main.css">
   <style>
@@ -81,9 +83,12 @@
   <section id="about" class="bg-grey-800 py-16 px-6">
     <div class="max-w-3xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-blue-400 mb-6">O mně</h2>
-      <p class="text-grey-300 text-lg">
-        Jsem technický nadšenec, který rád hledá chytrá a funkční řešení pro každodenní IT výzvy. Mám zkušenosti s automatizací, hybridní infrastrukturou a podporou uživatelů v prostředí, kde záleží na každé vteřině. 
-        Věřím, že dobře nastavený systém šetří čas i lidem nervy.
+      <p class="text-grey-300 text-lg leading-relaxed">
+        Mám rád technologie. Ne jako sbírku nástrojů, ale jako cestovatel miluje nové kontinenty – neznámé, náročné, ale plné možností.
+        <br><br>
+        V IT se pohybuji přes 10 let. Věřím, že nejlepší řešení nejsou ta, která fungují „zatím“, ale ta, která obstojí i zítra. Jsem kreativní, někdy až perfekcionistický, ale nevzdávám se, dokud nenajdu řešení, které má hlavu a patu.
+        <br><br>
+        Baví mě tvořit – ať už je to infrastruktura, automatizace, nebo dokumentace, která šetří čas a nervy. Když něco stavím, chci, aby to dávalo smysl. Ne jen dnes, ale i za měsíc.
       </p>
     </div>
   </section>
@@ -200,7 +205,7 @@
         </div>
 
         <div>
-          <div class="text-green-300 mb-1">🧠 Cortex XDR</div>
+          <div class="text-green-300 mb-1">🧠 Palo Alto - Cortex XDR</div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-red-700 rounded skill-bar" data-width="35%" style="width: 0%"></div>
           </div>
@@ -215,8 +220,33 @@
 
       </div>
     </div>
+
   </div>
 </section>
+
+<section id="tools" class="bg-gradient-to-r from-black via-green-900 to-black py-16 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-bold text-blue-400 mb-6">Nástroje, které mi denně pomáhají</h2>
+    <p class="text-grey-300 text-lg mb-10 max-w-2xl mx-auto">
+      V každodenní práci používám kombinaci technických nástrojů, editorů a platforem, které mi pomáhají zůstat produktivní, soustředěný a někdy i kreativní.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4 text-sm">
+      <span class="bg-indigo-700 text-white px-3 py-1 rounded-full hover:scale-110 transition" title="Editor, kde začíná většina mých skriptů">VS Code</span>
+      <span class="bg-blue-700 text-white px-3 py-1 rounded-full hover:scale-110 transition" title="Můj digitální druhý mozek">Notion</span>
+      <span class="bg-yellow-600 text-black px-3 py-1 rounded-full hover:scale-110 transition" title="Správa úkolů a projektů">Jira</span>
+      <span class="bg-slate-700 text-white px-3 py-1 rounded-full hover:scale-110 transition" title="Primární pracovní prostředí">Windows 11</span>
+      <span class="bg-gray-600 text-white px-3 py-1 rounded-full hover:scale-110 transition" title="Správa iOS zařízení, testování, automatizace">Apple iOS</span>
+      <span class="bg-orange-600 text-white px-3 py-1 rounded-full hover:scale-110 transition" title="Domácí lab, skriptování a testing">Ubuntu 22.04</span>
+      <span class="bg-red-600 text-white px-3 py-1 rounded-full hover:scale-110 transition" title="Vývoj Java projektů a skriptů">IntelliJ IDEA</span>
+
+      <!-- Bonus nástroje -->
+      <span class="bg-white text-black px-3 py-1 rounded-full hover:scale-110 transition" title="Nejlepší dokumentace na světě">Google</span>
+      <span class="bg-green-300 text-black px-3 py-1 rounded-full hover:scale-110 transition" title="Konzultant, editor a sparring partner v jednom">ChatGPT</span>
+    </div>
+  </div>
+</section>
+
 
   
 <section id="projects" class="bg-grey-900 py-16 px-6">
@@ -240,10 +270,10 @@
         <div class="relative mt-4">
           <div id="carousel" class="overflow-hidden rounded-lg">
             <div class="flex transition-transform duration-500" id="carousel-track">
-              <img src="./resources/images/nexus-1.png" alt="Nexus Screen 1" class="w-full shrink-0 object-cover">
-              <img src="./resources/images/nexus-2.png" alt="Nexus Screen 2" class="w-full shrink-0 object-cover">
-              <img src="./resources/images/nexus-3.png" alt="Nexus Screen 3" class="w-full shrink-0 object-cover">
-              <img src="./resources/images/nexus-4.png" alt="Nexus Screen 3" class="w-full shrink-0 object-cover">
+              <img src="./resources/images/nexus-1.png" alt="Nexus Screen 1" class="w-full h-64 shrink-0 object-cover">
+              <img src="./resources/images/nexus-2.png" alt="Nexus Screen 2" class="w-full h-64 shrink-0 object-cover">
+              <img src="./resources/images/nexus-3.png" alt="Nexus Screen 3" class="w-full h-64 shrink-0 object-cover">
+              <img src="./resources/images/nexus-4.png" alt="Nexus Screen 4" class="w-full h-64 shrink-0 object-cover">
             </div>
           </div>
 
@@ -273,14 +303,31 @@
 
       <!-- 📱 Projekt 2 -->
       <div class="bg-blue-900 rounded-xl p-6 shadow-md hover:scale-[1.01] transition-transform duration-300">
-        <h3 class="text-xl font-semibold text-green-300">Zavedení MDM platformy</h3>
+        <h3 class="text-xl font-semibold text-green-300">HomeLab Automation Toolkit</h3>
         <p class="text-grey-400 text-sm mt-2">
-          Spolupráce na zavedení správy mobilních zařízení (SOTI), včetně propojení na interní systém a nasazení profilů.
+          Projekt zaměřený na automatizované nasazení infrastruktury v domácím labu. Kombinuje sílu Terraformu, Proxmox API, cloud-init a Ansible pro rychlé a opakovatelné nasazení testovacích i produkčních prostředí. Používáno při vývoji a testování bezpečnostních scénářů i skriptování.
         </p>
+        <ul class="list-disc list-inside text-grey-400 mt-4 text-sm space-y-1">
+          <li>Automatické vytváření VM přes Proxmox API s custom cloud-init ISO</li>
+          <li>Terraform moduly pro provisioning a síťování</li>
+          <li>Ansible role pro konfiguraci, SSH access a instalaci nástrojů</li>
+          <li>Podpora více image šablon (Ubuntu, Debian, Alpine, Windows)</li>
+          <li>Ideální základna pro testování automatizací, MDM a bezpečnostních scénářů</li>
+        </ul>
+        <div class="relative mt-4">
+          <div id="carousel" class="overflow-hidden rounded-lg">
+            <div class="flex transition-transform duration-500" id="carousel-track">
+              <img src="./resources/images/ilustration1.png" alt="H9ome Lab Toolkit Diagram" class="w-full h-64 shrink-0 object-cover">
+            </div>
+          </div>
+        </div> 
         <div class="flex flex-wrap gap-2 mt-4">
-          <span class="bg-yellow-600 text-black text-xs px-2 py-1 rounded-full">SOTI</span>
-          <span class="bg-grey-600 text-white text-xs px-2 py-1 rounded-full">Android</span>
-          <span class="bg-purple-600 text-white text-xs px-2 py-1 rounded-full">Security</span>
+          <span class="bg-orange-600 text-white text-xs px-2 py-1 rounded-full">Proxmox</span>
+          <span class="bg-blue-700 text-white text-xs px-2 py-1 rounded-full">Terraform</span>
+          <span class="bg-purple-600 text-white text-xs px-2 py-1 rounded-full">Ansible</span>
+          <span class="bg-slate-700 text-white text-xs px-2 py-1 rounded-full">Cloud-Init</span>
+          <span class="bg-indigo-700 text-white text-xs px-2 py-1 rounded-full">ISO Customization</span>
+          <span class="bg-green-500 text-black text-xs px-2 py-1 rounded-full">Linux</span>
         </div>
       </div>
 
@@ -462,7 +509,7 @@
         </div>
   
         <div class="bg-blue-900 rounded-xl p-6 shadow-md">
-          <p class="text-4xl font-bold text-green-400 stat-number" data-target="7">0</p>
+          <p class="text-4xl font-bold text-green-400 stat-number" data-target="15">0</p>
           <p class="text-grey-300 mt-2 text-sm">zemí, kde jsem působil</p>
         </div>
   
@@ -523,7 +570,7 @@
     </div>
   </section>
   
-  <section id="motivation" class="bg-grey-900 py-16 px-6">
+  <section id="motivation" class="bg-gradient-to-r from-black via-blue-900 to-black py-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
       <h2 class="text-3xl font-bold text-blue-400 mb-6">Co mě baví a motivuje</h2>
   
@@ -551,6 +598,19 @@
       </ul>
     </div>
   </section> 
+
+  <section id="personal" class="bg-grey-900 py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-blue-400 mb-10">Když zrovna nepracuji…</h2>
+      <p class="text-grey-300 text-lg leading-relaxed text-left max-w-2xl mx-auto">
+        🎬 Rád si pustím dobrý film nebo seriál<br>
+        🚶‍♂️ Trávím čas na procházkách s manželkou a dětmi<br>
+        📚 Miluju vzdělávání a čtení<br>
+        🎮 Občas si zahraju něco na odreagování<br>
+        🌙 A když všichni spí, já tvořím – skripty, nástroje, nebo jen zkouším nové věci
+      </p>
+    </div>
+  </section>  
 
   <section id="references" class="bg-black py-16 px-6">
     <div class="max-w-6xl mx-auto">
@@ -606,19 +666,47 @@
     </div>
   </section>
 
-
-  <footer class="bg-black border-t border-grey-700 pt-12 pb-6 px-6 mt-16 text-grey-400">
-    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 text-sm">
+  <section id="countries" class="bg-grey-900 py-16 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6">Země, kde jsem působil</h2>
   
-      <div>
+      <p class="text-grey-300 text-lg mb-10">
+        Díky různorodým projektům a mezinárodní spolupráci jsem měl možnost působit napříč několika zeměmi – ať už vzdáleně nebo fyzicky.
+      </p>
+  
+      <div class="flex flex-wrap justify-center gap-3">
+        <span class="bg-blue-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Česká republika</span>
+        <span class="bg-red-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Slovensko</span>
+        <span class="bg-green-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Polsko</span>
+        <span class="bg-indigo-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Maďarsko</span>
+        <span class="bg-yellow-600 text-black text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Rumunsko</span>
+        <span class="bg-purple-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Slovinsko</span>
+        <span class="bg-gray-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Německo</span>
+        <span class="bg-pink-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Francie</span>
+        <span class="bg-blue-500 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Itálie</span>
+        <span class="bg-red-500 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Španělsko</span>
+        <span class="bg-orange-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Nizozemsko</span>
+        <span class="bg-gray-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Velká Británie</span>
+        <span class="bg-green-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Indie</span>
+        <span class="bg-black border border-white text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">USA</span>
+        <span class="bg-yellow-700 text-black text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">JAR</span>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-grey-900 pt-12 pb-6 px-6 mt-16 text-grey-400">
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
+  
+      <!-- 👤 O autorovi -->
+      <div class="max-w-xs">
         <h4 class="text-green-400 font-semibold text-base mb-3">Martin Kliment</h4>
-        <p>
-          Platform Engineer ve společnosti Packeta Innovations s. r. o., se zaměřením na automatizaci, infrastrukturu a bezpečnost.
-          Rád stavím nástroje, které šetří čas a dávají smysl.
+        <p class="text-grey-400 leading-relaxed">
+          Platform Engineer ve společnosti Packeta Innovations s. r. o., zaměřený na infrastrukturu, bezpečnost a automatizaci. Věřím v kvalitní dokumentaci, funkční řešení a nástroje, které zjednodušují život.
         </p>
       </div>
   
-      <div class="text-left pl-12">
+      <!-- 🔗 Rychlé odkazy -->
+      <div class="pl-4">
         <h4 class="text-green-400 font-semibold text-base mb-3">Odkazy</h4>
         <ul class="space-y-2">
           <li><a href="#about" class="hover:text-blue-400 transition">O mně</a></li>
@@ -626,36 +714,34 @@
           <li><a href="#timeline" class="hover:text-blue-400 transition">Zkušenosti</a></li>
         </ul>
       </div>
-
-
-      <div class="text-left">
+  
+      <!-- 🌐 Spojme se -->
+      <div class="pl-4">
         <h4 class="text-green-400 font-semibold text-base mb-3">Spojme se</h4>
-
-        <!-- Ikony -->
-        <div class="flex gap-4 items-center mb-4">
+        <div class="flex gap-4 items-center mb-2">
+          <!-- LinkedIn -->
           <a href="https://www.linkedin.com/in/martinkliment/" target="_blank" class="hover:text-blue-400 transition" title="LinkedIn">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5V24H0V8zm7.5 0h4.7v2.4h.1c.7-1.2 2.4-2.5 4.9-2.5 5.2 0 6.2 3.4 6.2 7.8V24h-5v-6.9c0-1.6 0-3.6-2.2-3.6-2.2 0-2.5 1.7-2.5 3.4V24h-5V8z"/></svg>
           </a>
+  
+          <!-- GitHub -->
           <a href="https://github.com/expancion" target="_blank" class="hover:text-green-400 transition" title="GitHub">
             <svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 .5C5.73.5.5 5.73.5 12c0 5.1 3.29 9.43 7.84 10.97.57.1.78-.25.78-.55v-2.03c-3.19.7-3.86-1.39-3.86-1.39-.52-1.31-1.27-1.66-1.27-1.66-1.04-.71.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.02 1.76 2.68 1.25 3.33.96.1-.74.4-1.26.72-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.46-2.29 1.21-3.1-.12-.3-.53-1.53.11-3.18 0 0 .99-.31 3.25 1.18a11.3 11.3 0 0 1 2.96-.4c1 .01 2 .14 2.96.4 2.26-1.49 3.24-1.18 3.24-1.18.65 1.65.24 2.88.12 3.18.76.81 1.21 1.84 1.21 3.1 0 4.42-2.7 5.39-5.27 5.67.41.35.77 1.04.77 2.1v3.12c0 .3.2.65.79.54C20.7 21.42 24 17.1 24 12c0-6.27-5.23-11.5-12-11.5z"/></svg>
           </a>
         </div>
+        <br>
+        <p class="text-xs text-grey-500"> kliment.xyz • Česko / Evropa</p>
       </div>
-
-      <div class="text-left pr-16">
-        <h4 class="text-green-400 font-semibold text-base mb-3">Moje vizitka</h4>
-        <img src="./resources/images/qr-code.svg" alt="QR kód Martin Kliment" class="w-48 h-48 mx-auto mb-2 opacity-90 hover:opacity-100 transition-opacity duration-300">
-      </div>
-
-
-    </div>
   
-    <div class="mt-10 text-center text-xs text-grey-600">
+    </div>
+    <div class="mt-6 text-center text-blue-300 italic text-sm sm:text-base leading-relaxed">
+      „Chytrý člověk vyřeší problém. Moudrý člověk se mu vyhne.“ – Albert Einstein
+    </div>
+    <!-- Copyright -->
+    <div class="mt-8 text-center text-xs text-grey-600">
       © 2025 Martin Kliment — Všechna práva vyhrazena
     </div>
-  </footer>
-  
-  
+  </footer>  
 
   <script src="./resources/js/skills.js"></script>
   
