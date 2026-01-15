@@ -227,9 +227,7 @@ const translations = {
                 title: "Příkazy",
                 lines: [
                     { cmd: "help", desc: "seznam příkazů" },
-                    { cmd: "nexus", desc: "seznam modulů" },
-                    { cmd: "nexus <id>", desc: "detail modulu" },
-                    { cmd: "nexus status", desc: "stav projektu" },
+                    { cmd: "nexus", desc: "příkazy pro Nexus" },
                     { cmd: "lang cz|en", desc: "přepnout jazyk" },
                     { cmd: "cv", desc: "otevřít nebo stáhnout CV" },
                     { cmd: "download cv", desc: "stáhnout CV" },
@@ -237,6 +235,14 @@ const translations = {
                     { cmd: "skills", desc: "stack / dovednosti" },
                     { cmd: "contact", desc: "kontakt" },
                     { cmd: "clear", desc: "vyčistit obrazovku" },
+                ],
+            },
+            nexusHelp: {
+                title: "Nexus",
+                lines: [
+                    { cmd: "nexus list", desc: "seznam modulů" },
+                    { cmd: "nexus <id>", desc: "detail modulu" },
+                    { cmd: "nexus status", desc: "stav projektu" },
                 ],
             },
             modulesTitle: "Nexus moduly",
@@ -317,7 +323,7 @@ const translations = {
                 },
             },
             usage: {
-                nexus: "Použití: nexus [<id>|status]",
+                nexus: "Použití: nexus [list|status|<id>]",
                 lang: "Použití: lang [cz|en]",
                 cv: "Použití: cv [open|download]",
                 download: "Použití: download cv",
@@ -389,6 +395,7 @@ const translations = {
                 ],
             },
         },
+
 
 
     },
@@ -617,9 +624,7 @@ const translations = {
                 title: "Commands",
                 lines: [
                     { cmd: "help", desc: "show commands" },
-                    { cmd: "nexus", desc: "list modules" },
-                    { cmd: "nexus <id>", desc: "module details" },
-                    { cmd: "nexus status", desc: "project status" },
+                    { cmd: "nexus", desc: "Nexus commands" },
                     { cmd: "lang cz|en", desc: "switch language" },
                     { cmd: "cv", desc: "open or download CV" },
                     { cmd: "download cv", desc: "download CV" },
@@ -627,6 +632,14 @@ const translations = {
                     { cmd: "skills", desc: "tech stack" },
                     { cmd: "contact", desc: "contact" },
                     { cmd: "clear", desc: "clear screen" },
+                ],
+            },
+            nexusHelp: {
+                title: "Nexus",
+                lines: [
+                    { cmd: "nexus list", desc: "list modules" },
+                    { cmd: "nexus <id>", desc: "module details" },
+                    { cmd: "nexus status", desc: "project status" },
                 ],
             },
             modulesTitle: "Nexus modules",
@@ -707,7 +720,7 @@ const translations = {
                 },
             },
             usage: {
-                nexus: "Usage: nexus [<id>|status]",
+                nexus: "Usage: nexus [list|status|<id>]",
                 lang: "Usage: lang [cz|en]",
                 cv: "Usage: cv [open|download]",
                 download: "Usage: download cv",
@@ -779,6 +792,7 @@ const translations = {
                 ],
             },
         },
+
 
 
     },

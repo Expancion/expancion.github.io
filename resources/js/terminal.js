@@ -261,21 +261,24 @@ const buildModuleSearchText = (moduleItem, detail) => {
   return parts.join(" ").toLowerCase();
 };
 
-const renderHelp = () => {
-  const terminal = getTerminalData();
-  const help = terminal.help;
-  if (!help) return;
+const renderCommandList = (listData) => {
+  if (!listData) return;
   const lines = [];
-  if (help.title) {
-    lines.push(createStrongLine(help.title));
+  if (listData.title) {
+    lines.push(createStrongLine(listData.title));
   }
-  if (Array.isArray(help.lines)) {
-    help.lines.forEach((line) => {
+  if (Array.isArray(listData.lines)) {
+    listData.lines.forEach((line) => {
       if (!line?.cmd) return;
       lines.push(createCommandLine(line.cmd, line.desc));
     });
   }
   printLines(lines);
+};
+
+const renderHelp = () => {
+  const terminal = getTerminalData();
+  renderCommandList(terminal.help);
 };
 
 const renderModulesList = (modules, emptyText, titleText) => {
@@ -478,9 +481,29 @@ const commands = {
     );
     const first = (tokens[0] || "").toLowerCase();
     const second = (tokens[1] || "").toLowerCase();
+    const listRequested =
+      rawArgs.includes("list") || rawArgs.includes("seznam");
 
-    if (!first || first === "all" || first === "projects" || first === "tools") {
-      return renderModules(parsed || { rawArgs: rawArgs, aliasArgs: [] });
+    if (!rawArgs.length) {
+      const terminal = getTerminalData();
+      if (terminal.nexusHelp) {
+        renderCommandList(terminal.nexusHelp);
+        return null;
+      }
+      const usage = terminal.usage?.nexus || terminal.usage?.modules;
+      if (usage) {
+        printLines(usage);
+      }
+      return null;
+    }
+
+    if (
+      listRequested ||
+      first === "all" ||
+      first === "projects" ||
+      first === "tools"
+    ) {
+      return renderModules(parsed || { rawArgs: [], aliasArgs: [] });
     }
 
     if (
