@@ -9,8 +9,11 @@ const promptText =
 
 const STOPWORDS = new Set(["list", "all", "show"]);
 const ALIASES = {
-  projects: "modules",
-  tools: "modules",
+  modules: "nexus",
+  module: "nexus",
+  project: "nexus",
+  projects: "nexus",
+  tools: "nexus",
 };
 
 const isWhitespace = (char) =>
@@ -307,8 +310,9 @@ const renderModules = async (parsed) => {
   if (mode === "search") {
     const query = (parsed.searchQuery || args.slice(1).join(" ")).trim();
     if (!query) {
-      if (terminal.usage?.modules) {
-        printLines(terminal.usage.modules);
+      const usage = terminal.usage?.nexus || terminal.usage?.modules;
+      if (usage) {
+        printLines(usage);
       }
       return;
     }
@@ -345,8 +349,9 @@ const renderModules = async (parsed) => {
     return;
   }
 
-  if (terminal.usage?.modules) {
-    printLines(terminal.usage.modules);
+  const usage = terminal.usage?.nexus || terminal.usage?.modules;
+  if (usage) {
+    printLines(usage);
   }
 };
 
@@ -369,6 +374,16 @@ const renderModuleDetail = async (id) => {
   }
   printLines(lines);
   return true;
+};
+
+const renderNexusStatus = () => {
+  const status = t("terminal.nexusStatus");
+  if (!status) return;
+  if (Array.isArray(status)) {
+    printLines(status);
+  } else {
+    printLines(status);
+  }
 };
 
 const renderAbout = () => {
@@ -456,22 +471,43 @@ const commands = {
   skills() {
     renderSkills();
   },
-  modules(_args, parsed) {
-    if (parsed) {
-      return renderModules(parsed);
+  async nexus(args, parsed) {
+    const rawArgs = parsed?.rawArgs || args || [];
+    const tokens = [...(parsed?.aliasArgs || []), ...rawArgs].filter(
+      (token) => !STOPWORDS.has(token)
+    );
+    const first = (tokens[0] || "").toLowerCase();
+    const second = (tokens[1] || "").toLowerCase();
+
+    if (!first || first === "all" || first === "projects" || first === "tools") {
+      return renderModules(parsed || { rawArgs: rawArgs, aliasArgs: [] });
     }
-    return renderModules({ rawArgs: _args || [], aliasArgs: [] });
-  },
-  module(args) {
-    const id = (args?.[0] || "").toLowerCase();
-    if (!id) {
-      const terminal = getTerminalData();
-      if (terminal.usage?.module) {
-        printLines(terminal.usage.module);
-      }
+
+    if (
+      first === "status" ||
+      first === "stav" ||
+      first === "stavprojektu" ||
+      first === "stav-projektu" ||
+      (first === "stav" && second === "projektu")
+    ) {
+      renderNexusStatus();
       return null;
     }
-    return renderModuleDetail(id);
+
+    if (first === "search") {
+      return renderModules(parsed || { rawArgs: rawArgs, aliasArgs: [] });
+    }
+
+    const id = first;
+    const found = await renderModuleDetail(id);
+    if (!found) {
+      const terminal = getTerminalData();
+      const usage = terminal.usage?.nexus || terminal.usage?.modules;
+      if (usage) {
+        printLines(usage);
+      }
+    }
+    return null;
   },
   async cv(args) {
     const action = (args?.[0] || "").toLowerCase();
@@ -534,21 +570,6 @@ const commands = {
 
 const routeCommand = async (parsed) => {
   if (!parsed.cmd) return;
-  if (parsed.cmd === "project") {
-    const wantsList =
-      parsed.rawArgs.length === 0 ||
-      parsed.rawArgs.some((token) => STOPWORDS.has(token));
-    if (wantsList) {
-      await renderModules({
-        ...parsed,
-        aliasArgs: ["projects"],
-      });
-      return;
-    }
-    await commands.module(parsed.args, parsed);
-    return;
-  }
-
   const action = commands[parsed.cmd];
   if (action) {
     const result = action(parsed.args, parsed);

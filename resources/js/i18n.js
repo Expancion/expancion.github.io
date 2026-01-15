@@ -221,15 +221,15 @@ const translations = {
         },
         terminal: {
             coreTitle: "Nexus",
-            coreSubtitle: "Modulární admin platforma - nástroje pro sysadmin/DevOps.",
+            coreSubtitle: "Osobní CV v terminálu.",
             helpIntro: "Napiš /help pro seznam příkazů.",
             help: {
                 title: "Příkazy",
                 lines: [
                     { cmd: "help", desc: "seznam příkazů" },
-                    { cmd: "modules", desc: "seznam modulů (tools / projects)" },
-                    { cmd: "modules search <text>", desc: "hledání v modulech" },
-                    { cmd: "module <id>", desc: "detail modulu" },
+                    { cmd: "nexus", desc: "seznam modulů" },
+                    { cmd: "nexus <id>", desc: "detail modulu" },
+                    { cmd: "nexus status", desc: "stav projektu" },
                     { cmd: "lang cz|en", desc: "přepnout jazyk" },
                     { cmd: "cv", desc: "otevřít nebo stáhnout CV" },
                     { cmd: "download cv", desc: "stáhnout CV" },
@@ -239,7 +239,7 @@ const translations = {
                     { cmd: "clear", desc: "vyčistit obrazovku" },
                 ],
             },
-            modulesTitle: "Moduly",
+            modulesTitle: "Nexus moduly",
             modulesEmpty: "Žádné moduly k zobrazení.",
             modulesSearchEmpty: "Žádné výsledky.",
             modules: [
@@ -317,14 +317,13 @@ const translations = {
                 },
             },
             usage: {
-                modules: "Použití: modules [tools|projects|all] | modules search <text>",
-                module: "Použití: module <id>",
+                nexus: "Použití: nexus [<id>|status]",
                 lang: "Použití: lang [cz|en]",
                 cv: "Použití: cv [open|download]",
                 download: "Použití: download cv",
             },
             errors: {
-                unknownModule: "Neznámý modul: {id}. Použij: modules",
+                unknownModule: "Neznámý modul: {id}. Použij: nexus",
                 unknownCommand: "Neznámý příkaz: {cmd}. Napiš /help.",
                 noResults: "Nic jsem nenašel.",
             },
@@ -337,13 +336,17 @@ const translations = {
                 cvOpen: "Otevírám CV v novém okně",
                 cvDownload: "Stahuji CV",
             },
+            nexusStatus: [
+                "Stav projektu: 4 moduly dokončené.",
+                "Aktuálně testujeme a ladíme další.",
+            ],
             langSet: "Jazyk nastaven na {lang}",
             tip: "Tip: napiš help",
             quick: {
                 help: "nápověda",
                 about: "o mně",
                 skills: "dovednosti",
-                projects: "projekty",
+                nexus: "nexus",
                 cv: "cv",
                 contact: "kontakt",
             },
@@ -386,6 +389,7 @@ const translations = {
                 ],
             },
         },
+
 
     },
     en: {
@@ -607,15 +611,15 @@ const translations = {
         },
         terminal: {
             coreTitle: "Nexus",
-            coreSubtitle: "Modular admin platform - tools for sysadmin/DevOps.",
+            coreSubtitle: "Personal CV in a CLI.",
             helpIntro: "Type /help for the command list.",
             help: {
                 title: "Commands",
                 lines: [
                     { cmd: "help", desc: "show commands" },
-                    { cmd: "modules", desc: "list modules (tools / projects)" },
-                    { cmd: "modules search <text>", desc: "search across modules" },
-                    { cmd: "module <id>", desc: "module details" },
+                    { cmd: "nexus", desc: "list modules" },
+                    { cmd: "nexus <id>", desc: "module details" },
+                    { cmd: "nexus status", desc: "project status" },
                     { cmd: "lang cz|en", desc: "switch language" },
                     { cmd: "cv", desc: "open or download CV" },
                     { cmd: "download cv", desc: "download CV" },
@@ -625,7 +629,7 @@ const translations = {
                     { cmd: "clear", desc: "clear screen" },
                 ],
             },
-            modulesTitle: "Modules",
+            modulesTitle: "Nexus modules",
             modulesEmpty: "No modules to show.",
             modulesSearchEmpty: "No results.",
             modules: [
@@ -703,14 +707,13 @@ const translations = {
                 },
             },
             usage: {
-                modules: "Usage: modules [tools|projects|all] | modules search <text>",
-                module: "Usage: module <id>",
+                nexus: "Usage: nexus [<id>|status]",
                 lang: "Usage: lang [cz|en]",
                 cv: "Usage: cv [open|download]",
                 download: "Usage: download cv",
             },
             errors: {
-                unknownModule: "Unknown module: {id}. Use: modules",
+                unknownModule: "Unknown module: {id}. Use: nexus",
                 unknownCommand: "Unknown command: {cmd}. Type /help.",
                 noResults: "Nothing found.",
             },
@@ -723,13 +726,17 @@ const translations = {
                 cvOpen: "Opening CV in a new tab",
                 cvDownload: "Downloading CV",
             },
+            nexusStatus: [
+                "Project status: 4 modules completed.",
+                "Currently testing and refining the rest.",
+            ],
             langSet: "Language set to {lang}",
             tip: "Tip: type help",
             quick: {
                 help: "help",
                 about: "about",
                 skills: "skills",
-                projects: "projects",
+                nexus: "nexus",
                 cv: "cv",
                 contact: "contact",
             },
@@ -772,6 +779,7 @@ const translations = {
                 ],
             },
         },
+
 
     },
 };
