@@ -1,5 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-    new TypeIt("#hero-typing", {
+    const target = document.querySelector("#hero-typing");
+    if (!target || typeof TypeIt === "undefined") return;
+
+    new TypeIt(target, {
       speed: 75,
       deleteSpeed: 40,
       loop: true,

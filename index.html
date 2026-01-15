@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="./resources/images/favicon.png" type="image/png">
-  <title>Moje stránka</title>
+  <title data-i18n="meta.title">Moje stránka</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/typeit@8.7.1/dist/index.umd.js"></script>
   <script type="module" src="./resources/js/typewriter.js"></script>
   <script type="module" src="./resources/js/interactiveTimeLine.js"></script>
   <script type="module" src="./resources/js/animateStats.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script type="module" src="./resources/js/particlesBackground.js"></script>
+  <script type="module" src="resources/js/i18n.js"></script>
+  <script type="module" src="resources/js/terminal.js"></script>
+
 
   <script src="./resources/js/nexusCarousel.js"></script>
   <link rel="stylesheet" href="./resources/css/main.css">
@@ -39,51 +41,93 @@
 
       <!-- Navigace – desktop -->
       <div class="hidden md:flex flex-wrap justify-center gap-2 text-sm md:text-base">
-        <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Domů</a>
-        <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">O mně</a>
-        <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Dovednosti</a>
-        <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Projekty</a>
-        <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Zkušenosti</a>
-        <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Statistiky</a>
-        <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Co se učím</a>
-        <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Doporučení</a>
-        <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition">Jazyky</a>
+        <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.home">Domů</a>
+        <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.about">O mně</a>
+        <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.skills">Dovednosti</a>
+        <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.projects">Projekty</a>
+        <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.experience">Zkušenosti</a>
+        <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.stats">Statistiky</a>
+        <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.learning">Co se učím</a>
+        <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.references">Doporučení</a>
+        <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.languages">Jazyky</a>
       </div>
 
       <!-- Navigace – mobilní -->
       <div class="peer-checked:flex hidden absolute top-full left-0 w-full bg-black border-t border-gray-700 flex-col items-center gap-2 py-6 z-20 md:hidden text-sm">
-        <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Domů</a>
-        <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">O mně</a>
-        <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Dovednosti</a>
-        <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Projekty</a>
-        <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Zkušenosti</a>
-        <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Statistiky</a>
-        <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Co se učím</a>
-        <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Doporučení</a>
-        <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center">Jazyky</a>
+        <a href="#home" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.home">Domů</a>
+        <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.about">O mně</a>
+        <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.skills">Dovednosti</a>
+        <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.projects">Projekty</a>
+        <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.experience">Zkušenosti</a>
+        <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.stats">Statistiky</a>
+        <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.learning">Co se učím</a>
+        <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.references">Doporučení</a>
+        <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.languages">Jazyky</a>
       </div>
     </div>
   </nav>
 
   <!-- HERO sekce s částicemi -->
-  <section id="home" class="relative w-full h-screen bg-black pt-20 overflow-hidden">
+<section id="home" class="terminal-hero">
+  <div class="terminal-hero-inner">
+    <div class="terminal-hero-grid">
+      <div class="terminal-hero-copy">
+        <div class="terminal-hero-kicker" data-i18n="hero.subtitle">Virtualni CV</div>
+        <h1 class="terminal-hero-name">Martin Kliment</h1>
+        <p class="terminal-hero-tagline" data-i18n="hero.tagline">
+          Modularni CLI hub pro moji praci, projekty a stack.
+        </p>
+        <div class="terminal-hero-actions">
+          <a class="hero-cta primary" href="resources/files/cv-cz.pdf" data-i18n="hero.ctaDownload"
+            data-i18n-attr="href:hero.ctaDownloadLink">Download CV</a>
+          <a class="hero-cta ghost" href="#contact" data-i18n="hero.ctaContact">Kontakt</a>
+        </div>
+      </div>
 
-    <!-- 🔹 Particles Background Layer -->
-    <div id="particles-js" class="absolute inset-0 w-full h-full z-0"></div>
+      <div class="terminal-hero-terminal">
+        <div class="terminal-hero-lang" aria-label="Language switch">
+          <button id="lang-cz" class="lang-btn is-active" type="button" data-lang="cz">CZ</button>
+          <button id="lang-en" class="lang-btn" type="button" data-lang="en">EN</button>
+        </div>
 
-    <!-- 🔸 Obsah sekce -->
-    <div class="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-      <h1 id="hero-typing" class="text-4xl sm:text-5xl font-bold text-blue-300 drop-shadow-lg mb-4 min-h-[4rem]"></h1>
-      <p class="text-lg text-green-200 max-w-xl drop-shadow-md mb-6">
-        Tohle je moje digitální vizitka. Žádné šablony, jen moje práce.
-      </p>
+        <div class="terminal-window terminal-card">
+          <div class="terminal-bar">
+            <span class="terminal-title">Nexus CLI</span>
+          </div>
+
+          <div id="terminal-output" class="terminal-output" aria-live="polite"></div>
+
+          <div class="terminal-tip" data-i18n="terminal.tip">Tip: napis help</div>
+
+          <div class="terminal-input-line is-empty">
+            <span class="terminal-prompt">martin@kliment.xyz:~$</span>
+            <div class="terminal-input-wrap">
+              <input id="terminal-input" type="text" autocomplete="off" spellcheck="false"
+                aria-label="Terminal input" />
+              <span class="terminal-caret" aria-hidden="true"></span>
+            </div>
+          </div>
+        </div>
+
+        <div class="terminal-quick" aria-label="Quick commands">
+          <button class="terminal-pill" type="button" data-terminal-cmd="help" data-i18n="terminal.quick.help">help</button>
+          <button class="terminal-pill" type="button" data-terminal-cmd="about" data-i18n="terminal.quick.about">about</button>
+          <button class="terminal-pill" type="button" data-terminal-cmd="skills" data-i18n="terminal.quick.skills">skills</button>
+          <button class="terminal-pill" type="button" data-terminal-cmd="projects" data-i18n="terminal.quick.projects">projects</button>
+          <button class="terminal-pill" type="button" data-terminal-cmd="cv" data-i18n="terminal.quick.cv">cv</button>
+          <button class="terminal-pill" type="button" data-terminal-cmd="contact" data-i18n="terminal.quick.contact">contact</button>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
+
+
 
 <section id="about" class="bg-grey-800 py-16 px-6">
   <div class="max-w-3xl mx-auto text-center">
-    <h2 class="text-3xl font-bold text-blue-400 mb-6">O mně</h2>
-    <p class="text-grey-300 text-lg leading-relaxed">
+    <h2 class="text-3xl font-bold text-blue-400 mb-6" data-i18n="about.title">O mně</h2>
+    <p class="text-grey-300 text-lg leading-relaxed" data-i18n="about.body" data-i18n-html="true">
       Technologie mě baví dlouhodobě – ne jako seznam nástrojů, ale jako prostor, kde se potkává logika, kreativita a
       zodpovědnost.
       Rád stavím věci, které mají smysl dnes a obstojí i zítra.
@@ -104,11 +148,11 @@
 <section id="skills" class="bg-black py-16 px-6">
   <div class="max-w-6xl mx-auto">
 
-    <h2 class="text-3xl font-bold text-blue-400 text-center mb-4">
+    <h2 class="text-3xl font-bold text-blue-400 text-center mb-4" data-i18n="skills.title">
       Dovednosti, které používám v praxi
     </h2>
 
-    <p class="text-grey-300 text-center max-w-3xl mx-auto mb-10">
+    <p class="text-grey-300 text-center max-w-3xl mx-auto mb-10" data-i18n="skills.intro">
       Technologie nevnímám jako checklist. Některé oblasti mám hluboce zažité z každodenní praxe,
       jiné cíleně rozvíjím podle potřeb provozu, automatizace a dlouhodobé udržitelnosti systémů.
     </p>
@@ -117,12 +161,12 @@
 
       <!-- ☁️ Cloud & Admin -->
       <div class="space-y-6">
-        <h3 class="text-green-400 text-lg mb-2">☁️ Cloud & Identity / Admin</h3>
+        <h3 class="text-green-400 text-lg mb-2" data-i18n="skills.cloud.title">☁️ Cloud & Identity / Admin</h3>
 
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>☁️ Azure</span>
-            <span class="text-xs text-grey-400">Advanced</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.advanced">Advanced</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-blue-500 rounded skill-bar" data-width="70%" style="width: 0%"></div>
@@ -132,7 +176,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>📦 Intune</span>
-            <span class="text-xs text-grey-400">Advanced</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.advanced">Advanced</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-blue-400 rounded skill-bar" data-width="70%" style="width: 0%"></div>
@@ -142,7 +186,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>📨 Exchange</span>
-            <span class="text-xs text-grey-400">Advanced</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.advanced">Advanced</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-blue-500 rounded skill-bar" data-width="70%" style="width: 0%"></div>
@@ -152,7 +196,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>🪪 Entra ID</span>
-            <span class="text-xs text-grey-400">Advanced</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.advanced">Advanced</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-green-500 rounded skill-bar" data-width="70%" style="width: 0%"></div>
@@ -162,12 +206,12 @@
 
       <!-- ⚙️ Skriptování & Vývoj -->
       <div class="space-y-6">
-        <h3 class="text-green-400 text-lg mb-2">⚙️ Automatizace & vývoj</h3>
+        <h3 class="text-green-400 text-lg mb-2" data-i18n="skills.automation.title">⚙️ Automatizace & vývoj</h3>
 
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>🧪 Python</span>
-            <span class="text-xs text-grey-400">Working knowledge</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.working">Working knowledge</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-yellow-400 rounded skill-bar" data-width="45%" style="width: 0%"></div>
@@ -177,7 +221,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>🖥️ Bash</span>
-            <span class="text-xs text-grey-400">Advanced</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.advanced">Advanced</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-yellow-500 rounded skill-bar" data-width="60%" style="width: 0%"></div>
@@ -187,7 +231,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>⚡ PowerShell</span>
-            <span class="text-xs text-grey-400">Advanced</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.advanced">Advanced</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-yellow-500 rounded skill-bar" data-width="65%" style="width: 0%"></div>
@@ -197,7 +241,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>🧱 Terraform</span>
-            <span class="text-xs text-grey-400">Learning</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.learning">Learning</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-purple-500 rounded skill-bar" data-width="40%" style="width: 0%"></div>
@@ -207,7 +251,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>📜 Ansible</span>
-            <span class="text-xs text-grey-400">Learning</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.learning">Learning</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-purple-500 rounded skill-bar" data-width="40%" style="width: 0%"></div>
@@ -217,7 +261,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>☕ Java</span>
-            <span class="text-xs text-grey-400">Side projects</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.side">Side projects</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-red-400 rounded skill-bar" data-width="35%" style="width: 0%"></div>
@@ -227,7 +271,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>🎮 Godot</span>
-            <span class="text-xs text-grey-400">Exploring</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.exploring">Exploring</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-indigo-400 rounded skill-bar" data-width="25%" style="width: 0%"></div>
@@ -237,12 +281,12 @@
 
       <!-- 🔐 Security & Networking -->
       <div class="space-y-6">
-        <h3 class="text-green-400 text-lg mb-2">🔐 Security & Networking</h3>
+        <h3 class="text-green-400 text-lg mb-2" data-i18n="skills.security.title">🔐 Security & Networking</h3>
 
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>🌐 Azure Networking</span>
-            <span class="text-xs text-grey-400">Foundations</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.foundations">Foundations</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-sky-600 rounded skill-bar" data-width="25%" style="width: 0%"></div>
@@ -252,7 +296,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>📶 Ubiquiti</span>
-            <span class="text-xs text-grey-400">Advanced</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.advanced">Advanced</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-lime-600 rounded skill-bar" data-width="55%" style="width: 0%"></div>
@@ -262,7 +306,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>🧠 Cortex XDR</span>
-            <span class="text-xs text-grey-400">Working knowledge</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.working">Working knowledge</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-red-700 rounded skill-bar" data-width="35%" style="width: 0%"></div>
@@ -272,7 +316,7 @@
         <div>
           <div class="flex justify-between text-green-300 mb-1">
             <span>👁️ Darktrace</span>
-            <span class="text-xs text-grey-400">Working knowledge</span>
+            <span class="text-xs text-grey-400" data-i18n="skills.level.working">Working knowledge</span>
           </div>
           <div class="w-full h-3 bg-grey-700 rounded">
             <div class="h-full bg-pink-600 rounded skill-bar" data-width="45%" style="width: 0%"></div>
@@ -283,8 +327,8 @@
 
     <!-- 🧭 Legenda -->
     <div class="mt-12 text-center text-sm text-gray-400 max-w-3xl mx-auto">
-      <p class="mb-2 font-semibold text-gray-500">Legenda úrovní znalostí</p>
-      <p>
+      <p class="mb-2 font-semibold text-gray-500" data-i18n="skills.legend.title">Legenda úrovní znalostí</p>
+      <p data-i18n="skills.legend.body" data-i18n-html="true">
         <span class="text-white-700 font-medium">Core</span> – každodenní práce, návrh řešení, samostatné rozhodování<br>
         <span class="text-white-700 font-medium">Advanced</span> – složitější scénáře, troubleshooting, přesahy<br>
         <span class="text-white-700 font-medium">Working knowledge</span> – samostatné použití, občasná dokumentace<br>
@@ -297,11 +341,11 @@
 
   <section id="tools" class="bg-grey-900 py-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-green-400 mb-6">
+      <h2 class="text-3xl font-bold text-green-400 mb-6" data-i18n="tools.title">
         Nástroje, které mi denně pomáhají
       </h2>
 
-      <p class="text-grey-300 text-lg mb-10 max-w-2xl mx-auto">
+      <p class="text-grey-300 text-lg mb-10 max-w-2xl mx-auto" data-i18n="tools.intro">
         V každodenní práci používám kombinaci nástrojů a platforem,
         které mi pomáhají zůstat produktivní, soustředěný
         a udržet si přehled i v komplexním prostředí.
@@ -370,21 +414,21 @@
   
   <section id="projects" class="bg-grey-900 py-16 px-6">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-blue-400 text-center mb-10">Projekty & Ukázky práce</h2>
+      <h2 class="text-3xl font-bold text-blue-400 text-center mb-10" data-i18n="projects.title">Projekty & Ukázky práce</h2>
 
       <div class="grid gap-6 md:grid-cols-2">
               
         <div class="bg-blue-900 rounded-xl p-6 shadow-md hover:scale-[1.01] transition-transform duration-300">
           <h3 class="text-xl font-semibold text-green-300">Nexus Identity Admin</h3>
-          <p class="text-grey-300 text-sm mt-2">
+          <p class="text-grey-300 text-sm mt-2" data-i18n="projects.nexus.desc">
             Webový nástroj vytvořený pro systémové administrátory, který zjednodušuje správu Microsoft Entra, Intune a dalších služeb.
             Nabízí real-time logy, audit dashboard, možnost spouštět PowerShell skripty, integrované napojení na Graph API a další funkce zaměřené na bezpečnost a efektivitu.
           </p>
           <ul class="list-disc list-inside text-grey-400 mt-4 text-sm space-y-1">
-            <li>Moderní responzivní UI (světlý/tmavý režim)</li>
-            <li>Filtrování a export logů, auditování podezřelých aktivit</li>
-            <li>Správa zařízení, DNS a uživatelských dat přes Graph API</li>
-            <li>Navrženo s podporou více databázových backendů – výchozí je SQLite, ale připraven pro PostgreSQL i MySQL</li>
+            <li data-i18n="projects.nexus.list.1">Moderní responzivní UI (světlý/tmavý režim)</li>
+            <li data-i18n="projects.nexus.list.2">Filtrování a export logů, auditování podezřelých aktivit</li>
+            <li data-i18n="projects.nexus.list.3">Správa zařízení, DNS a uživatelských dat přes Graph API</li>
+            <li data-i18n="projects.nexus.list.4">Navrženo s podporou více databázových backendů - výchozí je SQLite, ale připraven pro PostgreSQL i MySQL</li>
           </ul>
           <div class="relative mt-4">
             <div id="carousel" class="overflow-hidden rounded-lg">
@@ -425,15 +469,15 @@
         <!-- 📱 Projekt 2 -->
         <div class="bg-blue-900 rounded-xl p-6 shadow-md hover:scale-[1.01] transition-transform duration-300">
           <h3 class="text-xl font-semibold text-green-300">HomeLab Automation Toolkit</h3>
-          <p class="text-grey-400 text-sm mt-2">
+          <p class="text-grey-400 text-sm mt-2" data-i18n="projects.homelab.desc">
             Projekt zaměřený na automatizované nasazení infrastruktury v domácím labu. Kombinuje sílu Terraformu, Proxmox API, cloud-init a Ansible pro rychlé a opakovatelné nasazení testovacích i produkčních prostředí. Používáno při vývoji a testování bezpečnostních scénářů i skriptování.
           </p>
           <ul class="list-disc list-inside text-grey-400 mt-4 text-sm space-y-1">
-            <li>Automatické vytváření VM přes Proxmox API s custom cloud-init ISO</li>
-            <li>Terraform moduly pro provisioning a síťování</li>
-            <li>Ansible role pro konfiguraci, SSH access a instalaci nástrojů</li>
-            <li>Podpora více image šablon (Ubuntu, Debian, Alpine, Windows)</li>
-            <li>Ideální základna pro testování automatizací, MDM a bezpečnostních scénářů</li>
+            <li data-i18n="projects.homelab.list.1">Automatické vytváření VM přes Proxmox API s custom cloud-init ISO</li>
+            <li data-i18n="projects.homelab.list.2">Terraform moduly pro provisioning a síťování</li>
+            <li data-i18n="projects.homelab.list.3">Ansible role pro konfiguraci, SSH access a instalaci nástrojů</li>
+            <li data-i18n="projects.homelab.list.4">Podpora více image šablon (Ubuntu, Debian, Alpine, Windows)</li>
+            <li data-i18n="projects.homelab.list.5">Ideální základna pro testování automatizací, MDM a bezpečnostních scénářů</li>
           </ul>
           <div class="relative mt-4">
             <div id="carousel" class="overflow-hidden rounded-lg">
@@ -458,11 +502,11 @@
 
   <section id="experience" class="bg-black py-16 px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-blue-400 text-center mb-6">
+      <h2 class="text-3xl font-bold text-blue-400 text-center mb-6" data-i18n="experience.title">
         Profesní vývoj
       </h2>
   
-      <p class="text-grey-300 text-center max-w-2xl mx-auto mb-12">
+      <p class="text-grey-300 text-center max-w-2xl mx-auto mb-12" data-i18n="experience.intro">
         Více než deset let v IT – od podpory koncových uživatelů až po návrh a provoz
         platformní infrastruktury. Každá role mě posunula blíž k pochopení systémů
         v měřítku, pod tlakem a v reálném provozu.
@@ -474,24 +518,24 @@
         <div class="mb-12 relative">
           <div class="absolute -left-10 w-7 h-7 bg-blue-500 rounded-full border-4 border-black"></div>
   
-          <h3 class="text-lg font-semibold text-green-300">
+          <h3 class="text-lg font-semibold text-green-300" data-i18n="experience.platform.title">
             Platform Engineer
           </h3>
-          <span class="text-sm text-grey-400">
+          <span class="text-sm text-grey-400" data-i18n="experience.platform.time">
             Packeta Innovations s.r.o. · 04/2025 – současnost
           </span>
   
-          <p class="text-grey-300 mt-2">
+          <p class="text-grey-300 mt-2" data-i18n="experience.platform.desc">
             Návrh a rozvoj platformní infrastruktury s důrazem na konektivitu,
             automatizaci a dlouhodobou udržitelnost prostředí.
           </p>
   
           <ul class="list-disc list-inside text-grey-300 mt-3 space-y-1">
-            <li>Návrh a správa hybridní infrastruktury (Azure ↔ on-prem)</li>
-            <li>Odpovědnost za síťovou konektivitu, VPN a Hub & Spoke topologii</li>
-            <li>Integrace a provoz MDM řešení v rámci firemního ekosystému</li>
-            <li>Spolupráce s DevOps a Security týmy</li>
-            <li>Dohled nad distribuovanou infrastrukturou dep</li>
+            <li data-i18n="experience.platform.list.1">Návrh a správa hybridní infrastruktury (Azure ↔ on-prem)</li>
+            <li data-i18n="experience.platform.list.2">Odpovědnost za síťovou konektivitu, VPN a Hub & Spoke topologii</li>
+            <li data-i18n="experience.platform.list.3">Integrace a provoz MDM řešení v rámci firemního ekosystému</li>
+            <li data-i18n="experience.platform.list.4">Spolupráce s DevOps a Security týmy</li>
+            <li data-i18n="experience.platform.list.5">Dohled nad distribuovanou infrastrukturou dep</li>
           </ul>
   
           <div class="flex flex-wrap gap-2 mt-4">
@@ -509,23 +553,23 @@
         <div class="mb-12 relative">
           <div class="absolute -left-10 w-7 h-7 bg-red-500 rounded-full border-4 border-black"></div>
   
-          <h3 class="text-lg font-semibold text-green-300">
+          <h3 class="text-lg font-semibold text-green-300" data-i18n="experience.system.title">
             System Administrator
           </h3>
-          <span class="text-sm text-grey-400">
+          <span class="text-sm text-grey-400" data-i18n="experience.system.time">
             Packeta Innovations s.r.o. · 10/2023 – 04/2025
           </span>
   
-          <p class="text-grey-300 mt-2">
+          <p class="text-grey-300 mt-2" data-i18n="experience.system.desc">
             Provozní správa infrastruktury a přechod od reaktivní podpory
             k systematičtějším a automatizovaným řešením.
           </p>
   
           <ul class="list-disc list-inside text-grey-300 mt-3 space-y-1">
-            <li>Správa serverové a síťové infrastruktury</li>
-            <li>Podpora distribuovaných poboček a jejich IT prostředí</li>
-            <li>Spolupráce na cloudové konektivitě a bezpečnosti</li>
-            <li>Správa MDM a integrace s dalšími službami</li>
+            <li data-i18n="experience.system.list.1">Správa serverové a síťové infrastruktury</li>
+            <li data-i18n="experience.system.list.2">Podpora distribuovaných poboček a jejich IT prostředí</li>
+            <li data-i18n="experience.system.list.3">Spolupráce na cloudové konektivitě a bezpečnosti</li>
+            <li data-i18n="experience.system.list.4">Správa MDM a integrace s dalšími službami</li>
           </ul>
   
           <div class="flex flex-wrap gap-2 mt-4">
@@ -540,18 +584,18 @@
         <div class="mb-12 relative">
           <div class="absolute -left-10 w-7 h-7 bg-green-500 rounded-full border-4 border-black"></div>
   
-          <h3 class="text-lg font-semibold text-green-300">
+          <h3 class="text-lg font-semibold text-green-300" data-i18n="experience.senior.title">
             Senior Infrastructure Engineer
           </h3>
-          <span class="text-sm text-grey-400">
+          <span class="text-sm text-grey-400" data-i18n="experience.senior.time">
             NTT Ltd. · 05/2022 – 10/2023
           </span>
   
           <ul class="list-disc list-inside text-grey-300 mt-3 space-y-1">
-            <li>1.–3. úroveň podpory pro tisíce uživatelů v evropském prostředí</li>
-            <li>Správa VMware infrastruktury a Windows Serverů</li>
-            <li>Monitoring dostupnosti klíčových aplikací</li>
-            <li>Onboarding uživatelů a IT procesy</li>
+            <li data-i18n="experience.senior.list.1">1.–3. úroveň podpory pro tisíce uživatelů v evropském prostředí</li>
+            <li data-i18n="experience.senior.list.2">Správa VMware infrastruktury a Windows Serverů</li>
+            <li data-i18n="experience.senior.list.3">Monitoring dostupnosti klíčových aplikací</li>
+            <li data-i18n="experience.senior.list.4">Onboarding uživatelů a IT procesy</li>
           </ul>
   
           <div class="flex flex-wrap gap-2 mt-4">
@@ -566,14 +610,14 @@
         <div class="relative">
           <div class="absolute -left-10 w-7 h-7 bg-yellow-500 rounded-full border-4 border-black"></div>
   
-          <h3 class="text-lg font-semibold text-green-300">
+          <h3 class="text-lg font-semibold text-green-300" data-i18n="experience.early.title">
             IT Support & Service Desk
           </h3>
-          <span class="text-sm text-grey-400">
+          <span class="text-sm text-grey-400" data-i18n="experience.early.time">
             2015 – 2022 · Telefónica / G4S / AutoCont / Dimension Data / NTT
           </span>
   
-          <p class="text-grey-300 mt-2">
+          <p class="text-grey-300 mt-2" data-i18n="experience.early.desc">
             Základ celé kariéry – každodenní práce s uživateli, incidenty,
             provozem a reálnými problémy v enterprise prostředí.
           </p>
@@ -587,11 +631,11 @@
 
   <section id="stats" class="bg-grey-900 py-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-6">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6" data-i18n="stats.title">
         Kontext mé práce
       </h2>
 
-      <p class="text-grey-300 text-lg mb-10 max-w-3xl mx-auto">
+      <p class="text-grey-300 text-lg mb-10 max-w-3xl mx-auto" data-i18n="stats.intro">
         Čísla pro mě nejsou cílem, ale kontextem.
         Pomáhají ukázat rozsah prostředí, ve kterém jsem pracoval,
         a odpovědnost, kterou jednotlivé role a projekty přinášely.
@@ -601,44 +645,44 @@
 
         <div class="bg-grey-800 ring-1 ring-blue-400 rounded-xl p-6 shadow-md">
           <p class="text-4xl font-bold text-green-400 stat-number" data-target="9000" data-plus>0</p>
-          <p class="text-grey-300 mt-2 text-sm">
-            uživatelů v podporovaném prostředí
-          </p>
+            <p class="text-grey-300 mt-2 text-sm" data-i18n="stats.users">
+              uživatelů v podporovaném prostředí
+            </p>
         </div>
 
         <div class="bg-grey-800 ring-1 ring-blue-400 rounded-xl p-6 shadow-md">
           <p class="text-4xl font-bold text-green-400 stat-number" data-target="100" data-plus>0</p>
-          <p class="text-grey-300 mt-2 text-sm">
-            serverů v produkčním provozu
-          </p>
+            <p class="text-grey-300 mt-2 text-sm" data-i18n="stats.servers">
+              serverů v produkčním provozu
+            </p>
         </div>
 
         <div class="bg-grey-800 ring-1 ring-blue-400 rounded-xl p-6 shadow-md">
           <p class="text-4xl font-bold text-green-400 stat-number" data-target="20000" data-plus>0</p>
-          <p class="text-grey-300 mt-2 text-sm">
-            spravovaných a monitorovaných zařízení
-          </p>
+            <p class="text-grey-300 mt-2 text-sm" data-i18n="stats.devices">
+              spravovaných a monitorovaných zařízení
+            </p>
         </div>
 
         <div class="bg-grey-800 ring-1 ring-blue-400 rounded-xl p-6 shadow-md">
           <p class="text-4xl font-bold text-green-400 stat-number" data-target="10" data-plus>0</p>
-          <p class="text-grey-300 mt-2 text-sm">
-            let praxe v IT provozu
-          </p>
+            <p class="text-grey-300 mt-2 text-sm" data-i18n="stats.years">
+              let praxe v IT provozu
+            </p>
         </div>
 
         <div class="bg-grey-800 ring-1 ring-blue-400 rounded-xl p-6 shadow-md">
           <p class="text-4xl font-bold text-green-400 stat-number" data-target="12">0</p>
-          <p class="text-grey-300 mt-2 text-sm">
-            technologií používaných v praxi
-          </p>
+            <p class="text-grey-300 mt-2 text-sm" data-i18n="stats.tech">
+              technologií používaných v praxi
+            </p>
         </div>
 
         <div class="bg-grey-800 ring-1 ring-blue-400 rounded-xl p-6 shadow-md">
           <p class="text-4xl font-bold text-green-400 stat-number" data-target="15">0</p>
-          <p class="text-grey-300 mt-2 text-sm">
-            zemí v rámci mezinárodní spolupráce
-          </p>
+            <p class="text-grey-300 mt-2 text-sm" data-i18n="stats.countries">
+              zemí v rámci mezinárodní spolupráce
+            </p>
         </div>
 
       </div>
@@ -647,11 +691,11 @@
 
   <section id="learning" class="bg-black py-16 px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-blue-400 text-center mb-6">
+      <h2 class="text-3xl font-bold text-blue-400 text-center mb-6" data-i18n="learning.title">
         Co se aktivně učím a kam směřuji
       </h2>
 
-      <p class="text-grey-300 text-center max-w-2xl mx-auto mb-10">
+      <p class="text-grey-300 text-center max-w-2xl mx-auto mb-10" data-i18n="learning.intro">
         Věřím, že dobrý technik se nepřestává učit ve chvíli, kdy zvládne každodenní provoz.
         Aktivně sleduji oblasti, které mají dlouhodobý dopad na stabilitu, bezpečnost a automatizaci.
         Část z nich zkouším v praxi v HomeLabu, část postupně zapojuji do reálných projektů.
@@ -661,10 +705,10 @@
 
         <!-- 🌐 Infrastruktura & Cloud -->
         <div>
-          <h3 class="text-lg text-green-400 font-semibold mb-2">
+          <h3 class="text-lg text-green-400 font-semibold mb-2" data-i18n="learning.infrastructure.title">
             🌐 Infrastruktura & Cloud
           </h3>
-          <p class="text-xs text-grey-400 mb-3">
+          <p class="text-xs text-grey-400 mb-3" data-i18n="learning.infrastructure.desc">
             Směr k deklarativní infrastruktuře a lepší správě identity.
           </p>
           <div class="flex justify-center flex-wrap gap-2">
@@ -675,10 +719,10 @@
 
         <!-- ⚙️ Automatizace & Vývoj -->
         <div>
-          <h3 class="text-lg text-green-400 font-semibold mb-2">
+          <h3 class="text-lg text-green-400 font-semibold mb-2" data-i18n="learning.automation.title">
             ⚙️ Automatizace & Vývoj
           </h3>
-          <p class="text-xs text-grey-400 mb-3">
+          <p class="text-xs text-grey-400 mb-3" data-i18n="learning.automation.desc">
             Nástroje, které mi pomáhají zmenšovat manuální práci a zvyšovat spolehlivost.
           </p>
           <div class="flex justify-center flex-wrap gap-2">
@@ -690,10 +734,10 @@
 
         <!-- 🔐 Bezpečnost & Monitoring -->
         <div>
-          <h3 class="text-lg text-green-400 font-semibold mb-2">
+          <h3 class="text-lg text-green-400 font-semibold mb-2" data-i18n="learning.security.title">
             🔐 Bezpečnost & Monitoring
           </h3>
-          <p class="text-xs text-grey-400 mb-3">
+          <p class="text-xs text-grey-400 mb-3" data-i18n="learning.security.desc">
             Lepší viditelnost, reakce na incidenty a pochopení chování prostředí.
           </p>
           <div class="flex justify-center flex-wrap gap-2">
@@ -704,10 +748,10 @@
 
         <!-- 🧪 HomeLab & Experimenty -->
         <div>
-          <h3 class="text-lg text-green-400 font-semibold mb-2">
+          <h3 class="text-lg text-green-400 font-semibold mb-2" data-i18n="learning.homelab.title">
             🧪 HomeLab & Experimenty
           </h3>
-          <p class="text-xs text-grey-400 mb-3">
+          <p class="text-xs text-grey-400 mb-3" data-i18n="learning.homelab.desc">
             Prostor pro testování bez kompromisů a učení se na vlastních chybách.
           </p>
           <div class="flex justify-center flex-wrap gap-2">
@@ -724,11 +768,11 @@
 
   <section id="motivation" class="bg-gradient-to-r from-black via-blue-900 to-black py-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-6">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6" data-i18n="motivation.title">
         Co mě baví a dává mi smysl
       </h2>
 
-      <p class="text-grey-300 text-lg mb-10">
+      <p class="text-grey-300 text-lg mb-10" data-i18n="motivation.intro">
         Technologie pro mě nejsou jen práce. Jsou to problémy, které čekají na dobré řešení.
         Nejvíc mě baví chvíle, kdy se složitá věc podaří zjednodušit tak,
         aby dávala smysl i lidem kolem a dlouhodobě fungovala v praxi.
@@ -737,7 +781,7 @@
       <ul class="text-left text-grey-300 text-base space-y-4 max-w-2xl mx-auto">
         <li class="flex items-start gap-3">
           <span class="text-green-400 mt-1">✔</span>
-          <span>
+          <span data-i18n="motivation.items.routine" data-i18n-html="true">
             <strong>Automatizace rutiny</strong> – nechci, aby lidé trávili čas opakováním věcí,
             které může spolehlivě řešit skript nebo systém.
           </span>
@@ -745,7 +789,7 @@
 
         <li class="flex items-start gap-3">
           <span class="text-green-400 mt-1">✔</span>
-          <span>
+          <span data-i18n="motivation.items.homelab" data-i18n-html="true">
             <strong>Budování vlastního HomeLabu</strong> – prostor, kde můžu testovat nápady,
             dělat chyby a pochopit technologie do hloubky.
           </span>
@@ -753,7 +797,7 @@
 
         <li class="flex items-start gap-3">
           <span class="text-green-400 mt-1">✔</span>
-          <span>
+          <span data-i18n="motivation.items.docs" data-i18n-html="true">
             <strong>Dokumentace a sdílení know-how</strong> – dobře popsané řešení šetří čas,
             nervy a pomáhá ostatním se rychle zorientovat.
           </span>
@@ -761,7 +805,7 @@
 
         <li class="flex items-start gap-3">
           <span class="text-green-400 mt-1">✔</span>
-          <span>
+          <span data-i18n="motivation.items.security" data-i18n-html="true">
             <strong>Bezpečnost a udržitelnost</strong> – rád přemýšlím nad tím,
             jak věci navrhnout tak, aby obstály i ve chvíli, kdy se něco pokazí.
           </span>
@@ -769,7 +813,7 @@
 
         <li class="flex items-start gap-3">
           <span class="text-green-400 mt-1">✔</span>
-          <span>
+          <span data-i18n="motivation.items.clarity" data-i18n-html="true">
             <strong>Přehlednost a rychlá orientace</strong> – logy, dashboardy a alerty
             mají sloužit lidem, ne je zahlcovat.
           </span>
@@ -780,11 +824,11 @@
 
   <section id="personal" class="bg-grey-900 py-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-10">
+      <h2 class="text-3xl font-bold text-blue-400 mb-10" data-i18n="personal.title">
         Když zrovna nepracuji…
       </h2>
 
-      <p class="text-grey-300 text-lg leading-relaxed max-w-2xl mx-auto">
+      <p class="text-grey-300 text-lg leading-relaxed max-w-2xl mx-auto" data-i18n="personal.body" data-i18n-html="true">
         Rád si dopřeju klid u dobrého filmu nebo seriálu a vyčistím si hlavu na procházkách
         s manželkou a dětmi.
         <br><br>
@@ -800,11 +844,11 @@
 
   <section id="languages" class="bg-black py-16 px-6">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-blue-400 text-center mb-6">
+      <h2 class="text-3xl font-bold text-blue-400 text-center mb-6" data-i18n="languages.title">
         Jazyky, ve kterých pracuji
       </h2>
 
-      <p class="text-grey-300 text-center max-w-2xl mx-auto mb-10">
+      <p class="text-grey-300 text-center max-w-2xl mx-auto mb-10" data-i18n="languages.intro">
         Jazyk beru jako nástroj. Nejde mi jen o porozumění,
         ale o schopnost vysvětlit problém, navrhnout řešení
         a domluvit se i ve složitějších technických situacích.
@@ -815,10 +859,10 @@
         <!-- 🇨🇿 Čeština -->
         <div>
           <div class="flex justify-between items-end mb-1">
-            <div class="text-green-300 font-medium">
+            <div class="text-green-300 font-medium" data-i18n="languages.czech">
               Čeština
             </div>
-            <div class="text-xs text-grey-400">
+            <div class="text-xs text-grey-400" data-i18n="languages.czechLevel">
               C2 · rodilý mluvčí
             </div>
           </div>
@@ -830,10 +874,10 @@
         <!-- 🇬🇧 Angličtina -->
         <div>
           <div class="flex justify-between items-end mb-1">
-            <div class="text-green-300 font-medium">
+            <div class="text-green-300 font-medium" data-i18n="languages.english">
               Angličtina
             </div>
-            <div class="text-xs text-grey-400">
+            <div class="text-xs text-grey-400" data-i18n="languages.englishLevel">
               C1 · profesionální úroveň
             </div>
           </div>
@@ -846,8 +890,8 @@
 
       <!-- 🧭 Legenda -->
       <div class="mt-10 text-center text-sm text-grey-400 max-w-2xl mx-auto">
-        <p class="font-semibold text-grey-300 mb-2">Poznámka k úrovním</p>
-        <p>
+        <p class="font-semibold text-grey-300 mb-2" data-i18n="languages.noteTitle">Poznámka k úrovním</p>
+        <p data-i18n="languages.noteBody" data-i18n-html="true">
           <span class="text-white font-medium">C2</span> – plná plynulost, přirozený projev, práce s detailem<br>
           <span class="text-white font-medium">C1</span> – každodenní profesionální komunikace, technické diskuze,
           dokumentace
@@ -859,47 +903,47 @@
 
   <section id="countries" class="bg-grey-900 py-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-6">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6" data-i18n="countries.title">
         Mezinárodní spolupráce a působení
       </h2>
 
-      <p class="text-grey-300 text-lg mb-10">
+      <p class="text-grey-300 text-lg mb-10" data-i18n="countries.intro">
         V rámci projektů a provozu jsem spolupracoval s týmy napříč různými zeměmi.
         Nešlo jen o lokaci, ale o pochopení rozdílných procesů,
         kultur a provozních požadavků v mezinárodním prostředí.
       </p>
 
       <div class="flex flex-wrap justify-center gap-3">
-        <span class="bg-blue-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Česká
+        <span class="bg-blue-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.cz">Česká
           republika</span>
         <span
-          class="bg-red-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Slovensko</span>
+          class="bg-red-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.sk">Slovensko</span>
         <span
-          class="bg-green-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Polsko</span>
+          class="bg-green-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.pl">Polsko</span>
         <span
-          class="bg-indigo-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Maďarsko</span>
+          class="bg-indigo-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.hu">Maďarsko</span>
         <span
-          class="bg-yellow-600 text-black text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Rumunsko</span>
+          class="bg-yellow-600 text-black text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.ro">Rumunsko</span>
         <span
-          class="bg-purple-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Slovinsko</span>
+          class="bg-purple-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.si">Slovinsko</span>
         <span
-          class="bg-gray-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Německo</span>
+          class="bg-gray-700 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.de">Německo</span>
         <span
-          class="bg-pink-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Francie</span>
+          class="bg-pink-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.fr">Francie</span>
         <span
-          class="bg-blue-500 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Itálie</span>
+          class="bg-blue-500 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.it">Itálie</span>
         <span
-          class="bg-red-500 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Španělsko</span>
+          class="bg-red-500 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.es">Španělsko</span>
         <span
-          class="bg-orange-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Nizozemsko</span>
-        <span class="bg-gray-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Velká
+          class="bg-orange-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.nl">Nizozemsko</span>
+        <span class="bg-gray-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.uk">Velká
           Británie</span>
         <span
-          class="bg-green-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Indie</span>
+          class="bg-green-600 text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.in">Indie</span>
         <span
-          class="bg-black border border-white text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">USA</span>
+          class="bg-black border border-white text-white text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.us">USA</span>
         <span
-          class="bg-yellow-700 text-black text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition">Jihoafrická
+          class="bg-yellow-700 text-black text-xs font-medium px-4 py-2 rounded-full hover:scale-110 transition" data-i18n="countries.list.za">Jihoafrická
           republika</span>
       </div>
     </div>
@@ -908,11 +952,11 @@
 
   <section id="certifications" class="bg-black py-16 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold text-blue-400 mb-6">
+      <h2 class="text-3xl font-bold text-blue-400 mb-6" data-i18n="certifications.title">
         Certifikace a ověření znalostí
       </h2>
 
-      <p class="text-grey-300 text-lg mb-10">
+      <p class="text-grey-300 text-lg mb-10" data-i18n="certifications.intro">
         Certifikace vnímám jako způsob, jak si strukturovaně ověřit znalosti
         a ukotvit témata, která používám nebo rozvíjím v praxi.
         Nejsou cílem samy o sobě, ale přirozenou součástí dlouhodobého učení.
@@ -935,30 +979,30 @@
     </div>
   </section>
 
-  <footer class="bg-grey-900 pt-12 pb-6 px-6 mt-16 text-grey-400">
+  <footer id="contact" class="bg-grey-900 pt-12 pb-6 px-6 mt-16 text-grey-400">
     <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-sm">
   
       <!-- 👤 O autorovi -->
       <div class="max-w-xs">
         <h4 class="text-green-400 font-semibold text-base mb-3">Martin Kliment</h4>
-        <p class="text-grey-400 leading-relaxed">
+        <p class="text-grey-400 leading-relaxed" data-i18n="footer.about.body">
           Platform Engineer ve společnosti Packeta Innovations s. r. o., zaměřený na infrastrukturu, bezpečnost a automatizaci. Věřím v kvalitní dokumentaci, funkční řešení a nástroje, které zjednodušují život.
         </p>
       </div>
   
       <!-- 🔗 Rychlé odkazy -->
       <div class="pl-4">
-        <h4 class="text-green-400 font-semibold text-base mb-3">Odkazy</h4>
+        <h4 class="text-green-400 font-semibold text-base mb-3" data-i18n="footer.links.title">Odkazy</h4>
         <ul class="space-y-2">
-          <li><a href="#about" class="hover:text-blue-400 transition">O mně</a></li>
-          <li><a href="#projects" class="hover:text-blue-400 transition">Projekty</a></li>
-          <li><a href="#timeline" class="hover:text-blue-400 transition">Zkušenosti</a></li>
+          <li><a href="#about" class="hover:text-blue-400 transition" data-i18n="footer.links.about">O mně</a></li>
+          <li><a href="#projects" class="hover:text-blue-400 transition" data-i18n="footer.links.projects">Projekty</a></li>
+          <li><a href="#timeline" class="hover:text-blue-400 transition" data-i18n="footer.links.experience">Zkušenosti</a></li>
         </ul>
       </div>
   
       <!-- 🌐 Spojme se -->
       <div class="pl-4">
-        <h4 class="text-green-400 font-semibold text-base mb-3">Spojme se</h4>
+        <h4 class="text-green-400 font-semibold text-base mb-3" data-i18n="footer.connect.title">Spojme se</h4>
         <div class="flex gap-4 items-center mb-2">
           <!-- LinkedIn -->
           <a href="https://www.linkedin.com/in/martinkliment/" target="_blank" class="hover:text-blue-400 transition" title="LinkedIn">
@@ -971,16 +1015,16 @@
           </a>
         </div>
         <br>
-        <p class="text-xs text-grey-500"> kliment.xyz • Česko / Evropa</p>
+        <p class="text-xs text-grey-500" data-i18n="footer.location"> kliment.xyz • Česko / Evropa</p>
       </div>
   
     </div>
-    <div class="mt-6 text-center text-blue-300 italic text-sm sm:text-base leading-relaxed">
-      „Chytrý člověk vyřeší problém. Moudrý člověk se mu vyhne.“ – Albert Einstein
+    <div class="mt-6 text-center text-blue-300 italic text-sm sm:text-base leading-relaxed" data-i18n="footer.quote">
+      „Chytrý člověk vyřeší problém. Moudrý člověk se mu vyhne.“ - Albert Einstein
     </div>
     <!-- Copyright -->
-    <div class="mt-8 text-center text-xs text-grey-600">
-      © 2025 Martin Kliment — Všechna práva vyhrazena
+    <div class="mt-8 text-center text-xs text-grey-600" data-i18n="footer.copyright">
+      © 2025 Martin Kliment - Všechna práva vyhrazena
     </div>
   </footer>  
 
