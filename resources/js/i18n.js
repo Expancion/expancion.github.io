@@ -228,6 +228,7 @@ const translations = {
                 lines: [
                     { cmd: "help", desc: "seznam příkazů" },
                     { cmd: "nexus", desc: "příkazy pro Nexus" },
+                    { cmd: "sac", desc: "Svíčková as Code pipeline" },
                     { cmd: "lang cz|en", desc: "přepnout jazyk" },
                     { cmd: "cv", desc: "otevřít nebo stáhnout CV" },
                     { cmd: "download cv", desc: "stáhnout CV" },
@@ -324,6 +325,7 @@ const translations = {
             },
             usage: {
                 nexus: "Použití: nexus [list|status|<id>]",
+                sac: "Použití: sac [--prod|--dry-run|reset]",
                 lang: "Použití: lang [cz|en]",
                 cv: "Použití: cv [open|download]",
                 download: "Použití: download cv",
@@ -346,6 +348,42 @@ const translations = {
                 "Stav projektu: 4 moduly dokončené.",
                 "Aktuálně testujeme a ladíme další.",
             ],
+            sac: {
+                title: "Svíčková as Code",
+                statusInit: "Inicializuji pipeline...",
+                statusRunning: "Spouštím pipeline...",
+                statusDone: "Dokončeno.",
+                statusAborted: "Pipeline zrušena.",
+                running: "SAC pipeline běží... napiš sac reset pro zrušení.",
+                resetDone: "SAC reset dokončen.",
+                resetIdle: "SAC pipeline neběží.",
+                resetLabel: "Reset",
+                modeLabel: "Režim: {mode}",
+                modeDefault: "default",
+                modeProd: "prod",
+                modeDry: "dry-run",
+                steps: [
+                    "INFO :: Načítání konfigurace svickova.yaml (verze: 1.0-stable)",
+                    "INFO :: Validace vstupů: maso=1.1kg, zelenina=1200g, halali=2 sklenice",
+                    "OK :: Tajné přísady injektovány: HALALI_ENV=present (redacted)",
+                    "INFO :: Příprava: rozmrazování mražené zeleniny (deterministický poměr)",
+                    "INFO :: Opékání masa: sůl + pepř aplikovány, povrch zatáhnut",
+                    "INFO :: Restování zeleniny: využívá se maso pro extrakci chuti",
+                    "OK :: Přidáno máslo: 50g • tukový nosič aktivní",
+                    "INFO :: Fáze slowcook: 150°C • 3h30m • batch režim",
+                    "WARN :: Detekován aromatický spike: sousedé mohou požadovat pozvání",
+                    "INFO :: Fáze reduce: 180°C • 1h • koncentrace chuti",
+                    "INFO :: Fáze caramelize: 200°C • víko otevřeno • Maillard aktivní",
+                    "OK :: Odpočinek masa: vlákna relaxují • připravenost k plátkování=high",
+                    "INFO :: Orchestrace omáčky: inicializace ponorného mixéru",
+                    "INFO :: Přidána smetana: 33% • cílová viskozita dosažena",
+                    "INFO :: Horizontální škálování: mléko +1.0L (lze škálovat až +2.0L)",
+                    "OK :: Konzistence stabilizována: zahuštění=zeleninové pyré (bez mouky)",
+                    "OK :: Servírování: knedlík=mixik • SLA: satisfied_humans >= 99.9%",
+                    "OK :: DEPLOY SUCCESS: svickova-as-code::prod ✔",
+                    "INFO :: Upozornění: wife_access=deny_all • do_not_disclose_halali=true",
+                ],
+            },
             langSet: "Jazyk nastaven na {lang}",
             tip: "Tip: napiš help",
             quick: {
@@ -395,6 +433,7 @@ const translations = {
                 ],
             },
         },
+
 
 
 
@@ -625,6 +664,7 @@ const translations = {
                 lines: [
                     { cmd: "help", desc: "show commands" },
                     { cmd: "nexus", desc: "Nexus commands" },
+                    { cmd: "sac", desc: "Svíčková as Code pipeline" },
                     { cmd: "lang cz|en", desc: "switch language" },
                     { cmd: "cv", desc: "open or download CV" },
                     { cmd: "download cv", desc: "download CV" },
@@ -721,6 +761,7 @@ const translations = {
             },
             usage: {
                 nexus: "Usage: nexus [list|status|<id>]",
+                sac: "Usage: sac [--prod|--dry-run|reset]",
                 lang: "Usage: lang [cz|en]",
                 cv: "Usage: cv [open|download]",
                 download: "Usage: download cv",
@@ -743,6 +784,42 @@ const translations = {
                 "Project status: 4 modules completed.",
                 "Currently testing and refining the rest.",
             ],
+            sac: {
+                title: "Svíčková as Code",
+                statusInit: "Initializing pipeline...",
+                statusRunning: "Running pipeline...",
+                statusDone: "Completed.",
+                statusAborted: "Pipeline aborted.",
+                running: "SAC pipeline running... type sac reset to abort.",
+                resetDone: "SAC reset complete.",
+                resetIdle: "SAC pipeline is not running.",
+                resetLabel: "Reset",
+                modeLabel: "Mode: {mode}",
+                modeDefault: "default",
+                modeProd: "prod",
+                modeDry: "dry-run",
+                steps: [
+                    "INFO :: Loading config svickova.yaml (version: 1.0-stable)",
+                    "INFO :: Validating inputs: meat=1.1kg, vegetables=1200g, halali=2 jars",
+                    "OK :: Secret ingredients injected: HALALI_ENV=present (redacted)",
+                    "INFO :: Prep: thawing frozen vegetables (deterministic ratio)",
+                    "INFO :: Searing meat: salt + pepper applied, surface sealed",
+                    "INFO :: Veg saute: meat fond used for flavor extraction",
+                    "OK :: Butter added: 50g • lipid carrier active",
+                    "INFO :: Slowcook phase: 150°C • 3h30m • batch mode",
+                    "WARN :: Aroma spike detected: neighbors may request invite",
+                    "INFO :: Reduce phase: 180°C • 1h • flavor concentration",
+                    "INFO :: Caramelize phase: 200°C • lid open • Maillard active",
+                    "OK :: Meat resting: fibers relax • slicing readiness=high",
+                    "INFO :: Sauce orchestration: immersion blender init",
+                    "INFO :: Cream added: 33% • target viscosity reached",
+                    "INFO :: Horizontal scaling: milk +1.0L (scalable up to +2.0L)",
+                    "OK :: Consistency stabilized: thickener=vegetable puree (no flour)",
+                    "OK :: Serving: dumplings=mixik • SLA: satisfied_humans >= 99.9%",
+                    "OK :: DEPLOY SUCCESS: svickova-as-code::prod ✔",
+                    "INFO :: Notice: wife_access=deny_all • do_not_disclose_halali=true",
+                ],
+            },
             langSet: "Language set to {lang}",
             tip: "Tip: type help",
             quick: {
@@ -792,6 +869,7 @@ const translations = {
                 ],
             },
         },
+
 
 
 

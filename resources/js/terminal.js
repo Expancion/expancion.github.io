@@ -7,6 +7,15 @@ const promptText =
   document.querySelector(".terminal-prompt")?.textContent?.trim() ||
   "martin@kliment.xyz:~$";
 
+const sacState = {
+  running: false,
+  abort: false,
+  runId: 0,
+  widget: null,
+  timerId: null,
+  startedAt: 0,
+};
+
 const STOPWORDS = new Set(["list", "all", "show"]);
 const ALIASES = {
   modules: "nexus",
@@ -221,6 +230,13 @@ const updateCaret = () => {
   inputLine.classList.toggle("is-focused", document.activeElement === input);
 };
 
+const setInputEnabled = (enabled) => {
+  if (!input || !inputLine) return;
+  input.disabled = !enabled;
+  inputLine.classList.toggle("is-disabled", !enabled);
+  updateCaret();
+};
+
 const insertCommand = (command) => {
   if (!input || !command) return;
   input.value = command;
@@ -386,6 +402,207 @@ const renderNexusStatus = () => {
     printLines(status);
   } else {
     printLines(status);
+  }
+};
+
+const formatElapsed = (ms) => {
+  const totalSeconds = Math.max(0, Math.floor(ms / 1000));
+  const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+  const seconds = String(totalSeconds % 60).padStart(2, "0");
+  return `${minutes}:${seconds}`;
+};
+
+const formatClock = (date) => {
+  const hours = String(date.getHours()).padStart(2, "0");
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+  return `${hours}:${minutes}:${seconds}`;
+};
+
+const parseSacStep = (step) => {
+  if (typeof step !== "string") {
+    return { level: "INFO", message: String(step) };
+  }
+  const match = step.match(/^(\w+)\s*::\s*(.*)$/);
+  if (match) {
+    return { level: match[1].toUpperCase(), message: match[2] };
+  }
+  return { level: "INFO", message: step };
+};
+
+const createSacLogLine = (step) => {
+  const { level, message } = parseSacStep(step);
+  const levelKey = level.toLowerCase();
+  const line = document.createElement("div");
+  line.className = "terminal-log-line";
+
+  const time = document.createElement("span");
+  time.className = "terminal-log-time dim";
+  time.textContent = `[${formatClock(new Date())}]`;
+
+  const levelSpan = document.createElement("span");
+  levelSpan.className = `terminal-log-level is-${levelKey}`;
+  levelSpan.textContent = level;
+
+  const messageSpan = document.createElement("span");
+  messageSpan.className = "terminal-log-message";
+  messageSpan.textContent = message;
+
+  line.append(
+    time,
+    document.createTextNode(" "),
+    levelSpan,
+    document.createTextNode(" :: "),
+    messageSpan
+  );
+
+  return line;
+};
+
+const resolveSacModeLabel = (sacData, mode) => {
+  let modeText = mode;
+  if (mode === "prod" && sacData.modeProd) modeText = sacData.modeProd;
+  if (mode === "dry-run" && sacData.modeDry) modeText = sacData.modeDry;
+  if (mode === "default" && sacData.modeDefault) modeText = sacData.modeDefault;
+  const labelTemplate = sacData.modeLabel || "Mode: {mode}";
+  return formatTemplate(labelTemplate, { mode: modeText });
+};
+
+const createSacWidget = (sacData, mode) => {
+  const container = document.createElement("div");
+  container.className = "terminal-sac";
+
+  const header = document.createElement("div");
+  header.className = "terminal-sac-header";
+
+  const title = document.createElement("div");
+  title.className = "terminal-sac-title";
+  title.textContent = sacData.title || "SAC";
+
+  const resetBtn = document.createElement("button");
+  resetBtn.type = "button";
+  resetBtn.className = "terminal-sac-reset";
+  resetBtn.textContent = sacData.resetLabel || "Reset";
+
+  header.append(title, resetBtn);
+
+  const status = document.createElement("div");
+  status.className = "terminal-sac-status";
+  status.textContent = sacData.statusInit || "Initializing pipeline...";
+
+  const progress = document.createElement("div");
+  progress.className = "terminal-sac-progress";
+  const bar = document.createElement("div");
+  bar.className = "terminal-sac-bar";
+  progress.appendChild(bar);
+
+  const meta = document.createElement("div");
+  meta.className = "terminal-sac-meta";
+  const timer = document.createElement("span");
+  timer.className = "terminal-sac-timer";
+  timer.textContent = "00:00";
+  const modeEl = document.createElement("span");
+  modeEl.className = "terminal-sac-mode";
+  modeEl.textContent = resolveSacModeLabel(sacData, mode);
+  meta.append(timer, modeEl);
+
+  container.append(header, status, progress, meta);
+
+  return {
+    container,
+    status,
+    bar,
+    timer,
+    resetBtn,
+  };
+};
+
+const stopSac = (silent = false) => {
+  const sacData = getTerminalData().sac || {};
+  if (!sacState.running && !sacState.widget) {
+    if (!silent && sacData.resetIdle) {
+      printLines(sacData.resetIdle);
+    }
+    return;
+  }
+  sacState.abort = true;
+  sacState.runId += 1;
+  sacState.running = false;
+  setInputEnabled(true);
+  if (sacState.timerId) {
+    clearInterval(sacState.timerId);
+    sacState.timerId = null;
+  }
+  if (sacState.widget?.container) {
+    sacState.widget.container.remove();
+  }
+  sacState.widget = null;
+  if (!silent && sacData.resetDone) {
+    printLines(sacData.resetDone);
+  }
+};
+
+const runSAC = async ({ mode }) => {
+  if (sacState.running) return;
+  const sacData = getTerminalData().sac || {};
+  const steps = Array.isArray(sacData.steps) ? sacData.steps : [];
+  if (!steps.length) return;
+
+  sacState.running = true;
+  sacState.abort = false;
+  sacState.runId += 1;
+  const runId = sacState.runId;
+  sacState.startedAt = Date.now();
+
+  const widget = createSacWidget(sacData, mode);
+  sacState.widget = widget;
+  widget.resetBtn.addEventListener("click", () => stopSac());
+  printLines(widget.container);
+
+  const baseDelay = mode === "prod" ? 720 : mode === "dry-run" ? 260 : 580;
+  widget.status.textContent = sacData.statusInit || "Initializing pipeline...";
+
+  sacState.timerId = setInterval(() => {
+    if (!sacState.widget || !sacState.running) return;
+    sacState.widget.timer.textContent = formatElapsed(
+      Date.now() - sacState.startedAt
+    );
+  }, 1000);
+
+  widget.status.textContent = sacData.statusRunning || "Running pipeline...";
+
+  for (let index = 0; index < steps.length; index += 1) {
+    if (sacState.abort || runId !== sacState.runId) {
+      return;
+    }
+    const line = steps[index];
+    if (line) {
+      printLines(createSacLogLine(line));
+    }
+    const progress = Math.round(((index + 1) / steps.length) * 100);
+    if (sacState.widget?.bar) {
+      sacState.widget.bar.style.width = `${progress}%`;
+    }
+    await wait(baseDelay);
+  }
+
+  if (sacState.abort || runId !== sacState.runId) {
+    return;
+  }
+
+  if (sacState.widget?.status) {
+    sacState.widget.status.textContent =
+      sacData.statusDone || "Completed.";
+  }
+  if (sacState.widget?.bar) {
+    sacState.widget.bar.style.width = "100%";
+  }
+
+  sacState.running = false;
+  setInputEnabled(true);
+  if (sacState.timerId) {
+    clearInterval(sacState.timerId);
+    sacState.timerId = null;
   }
 };
 
@@ -572,6 +789,31 @@ const commands = {
   contact() {
     renderContact();
   },
+  async sac(args, parsed) {
+    const rawArgs = parsed?.rawArgs || args || [];
+    const lowerArgs = rawArgs.map((item) => item.toLowerCase());
+    const sacData = getTerminalData().sac || {};
+
+    if (lowerArgs.includes("reset") || lowerArgs.includes("--reset")) {
+      stopSac();
+      return;
+    }
+
+    if (sacState.running) {
+      if (sacData.running) {
+        printLines(sacData.running);
+      }
+      return;
+    }
+
+    const mode = lowerArgs.includes("--prod")
+      ? "prod"
+      : lowerArgs.includes("--dry-run")
+        ? "dry-run"
+        : "default";
+
+    await runSAC({ mode });
+  },
   clear() {
     if (output) output.innerHTML = "";
   },
@@ -593,6 +835,13 @@ const commands = {
 
 const routeCommand = async (parsed) => {
   if (!parsed.cmd) return;
+  if (sacState.running && parsed.cmd !== "sac") {
+    const sacData = getTerminalData().sac || {};
+    if (sacData.running) {
+      printLines(sacData.running);
+    }
+    return;
+  }
   const action = commands[parsed.cmd];
   if (action) {
     const result = action(parsed.args, parsed);
@@ -629,6 +878,7 @@ const boot = () => {
 
 const resetTerminal = () => {
   if (!output) return;
+  stopSac(true);
   output.innerHTML = "";
   boot();
   updateCaret();
