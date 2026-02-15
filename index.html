@@ -12,7 +12,6 @@
   <script type="module" src="./resources/js/animateStats.js"></script>
   <script type="module" src="./resources/js/particlesBackground.js"></script>
   <script type="module" src="resources/js/i18n.js"></script>
-  <script type="module" src="resources/js/terminal.js"></script>
 
 
   <script src="./resources/js/nexusCarousel.js"></script>
@@ -45,11 +44,12 @@
         <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.about">O mně</a>
         <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.skills">Dovednosti</a>
         <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.projects">Projekty</a>
-        <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.experience">Zkušenosti</a>
+        <a href="#experience" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.experience">Zkušenosti</a>
         <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.stats">Statistiky</a>
         <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.learning">Co se učím</a>
-        <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.references">Doporučení</a>
+        <a href="#certifications" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.references">Doporučení</a>
         <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-3 py-1 rounded transition" data-i18n="nav.languages">Jazyky</a>
+        <a href="./nexusos/nexusos.html" class="text-cyan-200 border border-cyan-400/70 hover:bg-cyan-500/20 px-3 py-1 rounded transition" data-i18n="nav.nexus">NexusOS</a>
       </div>
 
       <!-- Navigace – mobilní -->
@@ -58,11 +58,12 @@
         <a href="#about" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.about">O mně</a>
         <a href="#skills" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.skills">Dovednosti</a>
         <a href="#projects" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.projects">Projekty</a>
-        <a href="#timeline" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.experience">Zkušenosti</a>
+        <a href="#experience" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.experience">Zkušenosti</a>
         <a href="#stats" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.stats">Statistiky</a>
         <a href="#learning" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.learning">Co se učím</a>
-        <a href="#references" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.references">Doporučení</a>
+        <a href="#certifications" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.references">Doporučení</a>
         <a href="#languages" class="text-green-300 hover:text-green-400 hover:bg-green-900/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.languages">Jazyky</a>
+        <a href="./nexusos/nexusos.html" class="text-cyan-200 border border-cyan-400/70 hover:bg-cyan-500/20 px-4 py-2 rounded transition w-4/5 text-center" data-i18n="nav.nexus">NexusOS</a>
       </div>
     </div>
   </nav>
@@ -90,32 +91,20 @@
           <button id="lang-en" class="lang-btn" type="button" data-lang="en">EN</button>
         </div>
 
-        <div class="terminal-window terminal-card">
-          <div class="terminal-bar">
-            <span class="terminal-title">Nexus CLI</span>
+        <div class="terminal-window terminal-card nexus-launch-card">
+          <div class="terminal-bar nexus-launch-head">
+            <span class="terminal-title" data-i18n="hero.nexusTitle">Nexus OS</span>
           </div>
 
-          <div id="terminal-output" class="terminal-output" aria-live="polite"></div>
-
-          <div class="terminal-tip" data-i18n="terminal.tip">Tip: napis help</div>
-
-          <div class="terminal-input-line is-empty">
-            <span class="terminal-prompt">martin@kliment.xyz:~$</span>
-            <div class="terminal-input-wrap">
-              <input id="terminal-input" type="text" autocomplete="off" spellcheck="false"
-                aria-label="Terminal input" />
-              <span class="terminal-caret" aria-hidden="true"></span>
-            </div>
+          <div class="nexus-launch-body">
+            <p class="nexus-launch-text" data-i18n="hero.nexusHint">
+              Spustit plnou NexusOS desktop experience.
+            </p>
+            <a class="hero-cta primary nexus-launch-btn" href="./nexusos/nexusos.html" target="_blank" rel="noopener"
+              data-i18n="hero.nexusLaunch">
+              Spustit NexusOS
+            </a>
           </div>
-        </div>
-
-        <div class="terminal-quick" aria-label="Quick commands">
-          <button class="terminal-pill" type="button" data-terminal-cmd="help" data-i18n="terminal.quick.help">help</button>
-          <button class="terminal-pill" type="button" data-terminal-cmd="about" data-i18n="terminal.quick.about">about</button>
-          <button class="terminal-pill" type="button" data-terminal-cmd="skills" data-i18n="terminal.quick.skills">skills</button>
-          <button class="terminal-pill" type="button" data-terminal-cmd="nexus" data-i18n="terminal.quick.nexus">nexus</button>
-          <button class="terminal-pill" type="button" data-terminal-cmd="cv" data-i18n="terminal.quick.cv">cv</button>
-          <button class="terminal-pill" type="button" data-terminal-cmd="contact" data-i18n="terminal.quick.contact">contact</button>
         </div>
       </div>
     </div>
@@ -996,7 +985,7 @@
         <ul class="space-y-2">
           <li><a href="#about" class="hover:text-blue-400 transition" data-i18n="footer.links.about">O mně</a></li>
           <li><a href="#projects" class="hover:text-blue-400 transition" data-i18n="footer.links.projects">Projekty</a></li>
-          <li><a href="#timeline" class="hover:text-blue-400 transition" data-i18n="footer.links.experience">Zkušenosti</a></li>
+          <li><a href="#experience" class="hover:text-blue-400 transition" data-i18n="footer.links.experience">Zkušenosti</a></li>
         </ul>
       </div>
   

@@ -1,0 +1,3489 @@
+/* ===== NEXUS THEME TOKENS ===== */
+:root {
+    --bg0: #06080d;
+    --bg1: #070a12;
+
+    --panel: rgba(18, 24, 33, 0.72);
+    --panel-strong: rgba(18, 24, 33, 0.86);
+
+    --border: rgba(255, 255, 255, 0.10);
+    --border2: rgba(255, 255, 255, 0.16);
+
+    --text: rgba(255, 255, 255, 0.90);
+    --muted: rgba(255, 255, 255, 0.62);
+
+    --accent: #06b6d4;
+    --accent2: #22d3ee;
+    --accent-rgb: 34, 211, 238;
+    --ok: #34d399;
+    --warn: #fbbf24;
+    --bad: #fb7185;
+
+    --r-lg: 16px;
+    --r-md: 12px;
+    --r-sm: 10px;
+
+    --shadow: 0 16px 50px rgba(0, 0, 0, 0.55);
+    --shadow2: 0 10px 30px rgba(0, 0, 0, 0.45);
+
+    --ease: cubic-bezier(0.2, 0.9, 0.2, 1);
+    --t: 180ms var(--ease);
+
+    --z-launcher: 40;
+    --z-gadgets: 50;
+    --z-taskbar: 60;
+    --z-applist: 70;
+    --z-window-base: 100;
+    --nx-brightness: 100%;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    overflow: hidden;
+    color: var(--text);
+    font-family: Roboto, system-ui, sans-serif;
+    background: var(--bg0);
+}
+
+button,
+input,
+textarea {
+    font: inherit;
+    color: inherit;
+}
+
+.muted {
+    color: var(--muted);
+}
+
+.ok {
+    color: var(--ok);
+}
+
+/* ===== DESKTOP ===== */
+#desktop {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background:
+        radial-gradient(900px 520px at 20% 15%, rgba(34, 211, 238, 0.14), transparent 60%),
+        radial-gradient(900px 520px at 80% 20%, rgba(52, 211, 153, 0.10), transparent 60%),
+        radial-gradient(900px 520px at 50% 90%, rgba(6, 182, 212, 0.08), transparent 60%),
+        linear-gradient(180deg, var(--bg1), var(--bg0));
+    filter: brightness(var(--nx-brightness));
+}
+
+#desktop::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.18;
+    background:
+        linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(circle at 50% 35%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0.15) 55%, rgba(0, 0, 0, 0) 78%);
+}
+
+/* ===== LAUNCHER ===== */
+#launcher {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: var(--z-launcher);
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    max-height: calc(100vh - 110px);
+    overflow: auto;
+
+    padding: 12px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.55);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow2);
+}
+
+.nx-launch {
+    width: 58px;
+    height: 58px;
+    padding: 0;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+
+    color: var(--accent2);
+    font-size: 18px;
+    font-weight: 800;
+
+    cursor: pointer;
+    user-select: none;
+    transition: transform var(--t), background var(--t), border-color var(--t), box-shadow var(--t);
+}
+
+.nx-launch:hover {
+    transform: translateY(-2px);
+    border-color: rgba(34, 211, 238, 0.40);
+    background: rgba(34, 211, 238, 0.10);
+    box-shadow: 0 8px 22px rgba(34, 211, 238, 0.18);
+}
+
+.nx-launch:active {
+    transform: translateY(0) scale(0.99);
+}
+
+/* ===== GADGETS ===== */
+#gadget-panel {
+    position: absolute;
+    right: 14px;
+    top: 14px;
+    z-index: var(--z-gadgets);
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    max-height: calc(100vh - 88px);
+    overflow: auto;
+}
+
+#gadget-panel.is-floating {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    max-height: none;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.nx-gadget {
+    width: 320px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.52);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow2);
+    padding: 12px;
+    transition: box-shadow var(--t), border-color var(--t), transform var(--t);
+}
+
+.nx-widget-floating {
+    position: absolute;
+    pointer-events: auto;
+}
+
+.nx-gadget.is-hidden {
+    display: none !important;
+}
+
+.nx-gadget.is-dragging {
+    border-color: rgba(var(--accent-rgb), 0.55);
+    box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(var(--accent-rgb), 0.22);
+    transition: none;
+}
+
+.nx-gadget-title {
+    margin-bottom: 10px;
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.10em;
+    color: rgba(34, 211, 238, 0.85);
+}
+
+.nx-widget-handle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: grab;
+    user-select: none;
+    padding-right: 28px;
+}
+
+.nx-widget-handle:active {
+    cursor: grabbing;
+}
+
+.nx-widget-grip {
+    color: var(--muted);
+    font-size: 11px;
+    letter-spacing: -1px;
+}
+
+.nx-widget-controls {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+}
+
+.nx-widget-close {
+    width: 24px;
+    height: 24px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--muted);
+    cursor: pointer;
+    transition: transform var(--t), border-color var(--t), background var(--t), color var(--t);
+}
+
+.nx-widget-close:hover {
+    transform: translateY(-1px);
+    border-color: rgba(251, 113, 133, 0.45);
+    background: rgba(251, 113, 133, 0.16);
+    color: var(--text);
+}
+
+.nx-widget-dock {
+    position: fixed;
+    inset: 0;
+    z-index: 9995;
+    pointer-events: none;
+}
+
+.nx-widget-dock-toggle {
+    min-width: 34px;
+    width: 34px;
+    padding: 0;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1;
+}
+
+#taskbar-widgets {
+    border-color: rgba(var(--accent-rgb), 0.32);
+    background: rgba(var(--accent-rgb), 0.16);
+}
+
+#taskbar-widgets.is-open {
+    border-color: rgba(var(--accent-rgb), 0.62);
+    background: rgba(var(--accent-rgb), 0.28);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.20);
+}
+
+.nx-widget-menu {
+    position: absolute;
+    right: 26px;
+    bottom: 86px;
+    width: 230px;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.84);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+    pointer-events: none;
+    transition: opacity var(--t), transform var(--t);
+}
+
+.nx-widget-menu.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.nx-widget-menu-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nx-widget-menu-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    font-size: 12px;
+    color: var(--text);
+}
+
+.nx-widget-menu-item input {
+    margin: 0;
+}
+
+.nx-widget-reset {
+    width: 100%;
+}
+
+#gadget-panel.widgets-locked .nx-widget-handle {
+    cursor: default;
+}
+
+#gadget-panel.widgets-locked .nx-widget-grip {
+    opacity: 0.45;
+}
+
+.nx-gadget-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.nx-gadget-big {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 40px;
+    font-weight: 900;
+    line-height: 1;
+}
+
+.nx-gadget-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-size: 13px;
+}
+
+.nx-gadget-footer {
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.nx-gadget-btn {
+    width: 34px;
+    height: 28px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: transform var(--t), background var(--t), border-color var(--t);
+}
+
+.nx-gadget-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.10);
+}
+
+.nx-gadget-kv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.nx-gadget-kv:first-of-type {
+    border-top: none;
+}
+
+.nx-gadget-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.nx-gadget-action {
+    flex: 1;
+    height: 32px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform var(--t), border-color var(--t), background var(--t);
+}
+
+.nx-gadget-action:hover {
+    transform: translateY(-1px);
+    border-color: rgba(var(--accent-rgb), 0.40);
+    background: rgba(var(--accent-rgb), 0.12);
+}
+
+.nx-monitor-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
+}
+
+.nx-monitor-kpi {
+    padding: 7px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nx-monitor-kpi span {
+    font-size: 11px;
+    color: var(--muted);
+}
+
+.nx-monitor-kpi b {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 14px;
+}
+
+.nx-monitor-bars {
+    margin-top: 10px;
+    display: grid;
+    gap: 7px;
+}
+
+.nx-monitor-bar {
+    height: 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.nx-monitor-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.75), rgba(var(--accent-rgb), 0.36));
+    transition: width var(--t);
+}
+
+.nx-sparkline {
+    margin-top: 10px;
+    height: 38px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.16);
+    padding: 4px;
+    display: grid;
+    grid-auto-flow: column;
+    align-items: end;
+    gap: 2px;
+}
+
+.nx-sparkline span {
+    border-radius: 2px 2px 0 0;
+    background: rgba(var(--accent-rgb), 0.75);
+}
+
+.nx-pomo-time {
+    margin-top: 4px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 38px;
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+}
+
+.nx-task-form {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+}
+
+.nx-task-input {
+    min-width: 0;
+    height: 34px;
+    font-size: 13px;
+}
+
+.nx-task-list {
+    margin-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.nx-task-item {
+    display: grid;
+    grid-template-columns: 16px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nx-cal-event {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 8px;
+    padding: 7px 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nx-task-item input[type="checkbox"] {
+    margin: 0;
+}
+
+.nx-task-item.is-done span {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.nx-task-remove {
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 7px;
+    background: rgba(251, 113, 133, 0.14);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.nx-task-remove:hover {
+    background: rgba(251, 113, 133, 0.26);
+}
+
+.nx-cal-head {
+    margin-top: 2px;
+    display: grid;
+    grid-template-columns: 28px 1fr 28px;
+    align-items: center;
+    gap: 8px;
+}
+
+.nx-cal-month {
+    text-align: center;
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.nx-cal-grid {
+    margin-top: 8px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 4px;
+}
+
+.nx-cal-dow {
+    text-align: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+}
+
+.nx-cal-day {
+    position: relative;
+    height: 26px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    cursor: pointer;
+    font-size: 11px;
+}
+
+.nx-cal-day:hover {
+    border-color: rgba(var(--accent-rgb), 0.36);
+    background: rgba(var(--accent-rgb), 0.12);
+}
+
+.nx-cal-day.is-empty {
+    border-color: transparent;
+    background: transparent;
+    pointer-events: none;
+}
+
+.nx-cal-day.is-selected {
+    border-color: rgba(var(--accent-rgb), 0.64);
+    background: rgba(var(--accent-rgb), 0.20);
+}
+
+.nx-cal-day.is-today {
+    box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.42) inset;
+}
+
+.nx-cal-day.has-events::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 3px;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    background: rgba(var(--accent-rgb), 0.95);
+}
+
+.nx-cal-agenda {
+    margin-top: 8px;
+}
+
+/* ===== TASKBAR ===== */
+#taskbar {
+    position: absolute;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: var(--z-taskbar);
+
+    height: 56px;
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.68);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow2);
+}
+
+#taskbar-brand {
+    padding: 0 10px;
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    color: var(--accent2);
+}
+
+#taskbar-brand.is-clickable {
+    cursor: pointer;
+    user-select: none;
+    border-radius: 10px;
+    transition: background var(--t), color var(--t), transform var(--t);
+}
+
+#taskbar-brand.is-clickable:hover {
+    transform: translateY(-1px);
+    background: rgba(var(--accent-rgb), 0.10);
+}
+
+#taskbar-brand.is-clickable[aria-expanded="true"] {
+    background: rgba(var(--accent-rgb), 0.18);
+    color: var(--text);
+}
+
+#taskbar-brand.is-clickable:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.24);
+}
+
+#taskbar-apps {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#taskbar-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nx-power-btn {
+    min-width: 76px;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.nx-power-btn-danger {
+    border-color: rgba(251, 113, 133, 0.34);
+    background: rgba(251, 113, 133, 0.14);
+}
+
+.nx-power-btn-danger:hover {
+    border-color: rgba(251, 113, 133, 0.52);
+    background: rgba(251, 113, 133, 0.24);
+}
+
+.nx-power-menu {
+    position: absolute;
+    left: 14px;
+    bottom: 86px;
+    z-index: 9992;
+    width: 210px;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.86);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow2);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(8px) scale(0.985);
+    pointer-events: none;
+    transition: opacity var(--t), transform var(--t);
+}
+
+.nx-power-menu.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+#clock {
+    height: 34px;
+    padding: 0 12px;
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.65;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+    transition: transform var(--t), border-color var(--t), background var(--t), opacity var(--t);
+}
+
+#clock:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+    border-color: rgba(var(--accent-rgb), 0.35);
+    background: rgba(var(--accent-rgb), 0.10);
+}
+
+#clock:focus-visible {
+    outline: none;
+    opacity: 1;
+    border-color: rgba(var(--accent-rgb), 0.55);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.18);
+}
+
+.nx-dot {
+    display: none;
+    min-width: 16px;
+    height: 16px;
+    padding: 0 4px;
+    border-radius: 999px;
+    background: rgba(251, 113, 133, 0.25);
+    border: 1px solid rgba(251, 113, 133, 0.45);
+    color: #fff;
+    font-size: 11px;
+    line-height: 14px;
+    text-align: center;
+}
+
+.nx-power-off-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 15000;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 220ms var(--ease);
+    background:
+        radial-gradient(120% 100% at 50% 25%, rgba(var(--accent-rgb), 0.12), transparent 58%),
+        linear-gradient(180deg, #04070d, #020407);
+}
+
+.nx-power-off-screen.is-on {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nx-power-off-shell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.nx-power-on-btn {
+    width: 128px;
+    height: 128px;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--accent-rgb), 0.46);
+    background:
+        radial-gradient(120% 120% at 30% 20%, rgba(var(--accent-rgb), 0.42), rgba(var(--accent-rgb), 0.16));
+    color: var(--text);
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 16px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: transform var(--t), box-shadow var(--t), border-color var(--t);
+}
+
+.nx-power-on-btn:hover {
+    transform: translateY(-2px) scale(1.02);
+    border-color: rgba(var(--accent-rgb), 0.72);
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.52), 0 0 0 2px rgba(var(--accent-rgb), 0.20);
+}
+
+.nx-power-on-btn:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.30);
+}
+
+.nx-taskbtn {
+    height: 38px;
+    padding: 0 12px;
+
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+
+    cursor: pointer;
+    transition: transform var(--t), background var(--t), border-color var(--t);
+}
+
+.nx-taskbtn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.10);
+}
+
+.nx-taskbtn.is-active {
+    border-color: rgba(34, 211, 238, 0.55);
+    background: rgba(34, 211, 238, 0.18);
+}
+
+/* Hard reset so weather pill never falls back to default white button style. */
+#taskbar-weather,
+.nx-pill {
+    all: unset;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+
+    height: 34px;
+    padding: 0 10px;
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+
+    color: var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1;
+
+    cursor: pointer;
+    user-select: none;
+    transition: transform var(--t), background var(--t), border-color var(--t);
+}
+
+#taskbar-weather:hover,
+.nx-pill:hover {
+    transform: translateY(-1px);
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.08);
+}
+
+#taskbar-weather:active,
+.nx-pill:active {
+    transform: translateY(0);
+}
+
+#taskbar-weather .muted {
+    color: var(--muted);
+}
+
+.nx-applist-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: var(--z-applist);
+    display: grid;
+    place-items: center;
+    padding: 26px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--t);
+    background: rgba(5, 8, 13, 0.52);
+    backdrop-filter: blur(8px);
+}
+
+.nx-applist-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.nx-applist-panel {
+    width: min(980px, 94vw);
+    max-height: min(720px, calc(100vh - 140px));
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 14px;
+    border-radius: 20px;
+    border: 1px solid var(--border2);
+    background:
+        radial-gradient(130% 120% at 0% 0%, rgba(var(--accent-rgb), 0.18), transparent 58%),
+        rgba(10, 14, 20, 0.86);
+    box-shadow: var(--shadow);
+}
+
+.nx-applist-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.nx-applist-title {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.nx-applist-search-wrap {
+    width: 100%;
+}
+
+.nx-applist-search-wrap .nx-applist-search {
+    width: 100%;
+    min-width: 0;
+    height: 48px;
+    padding: 0 14px;
+    border-radius: 14px;
+    font-size: 15px;
+}
+
+.nx-applist-entities {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+    padding-right: 2px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.nx-applist-entity {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.nx-applist-entity-head {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.nx-applist-entity-title {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+}
+
+.nx-applist-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(98px, 1fr));
+    gap: 8px;
+}
+
+.nx-applist-item {
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    min-height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: transform var(--t), border-color var(--t), background var(--t), box-shadow var(--t);
+}
+
+.nx-applist-item:hover {
+    transform: translateY(-2px);
+    border-color: rgba(var(--accent-rgb), 0.48);
+    background: rgba(var(--accent-rgb), 0.16);
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.32);
+}
+
+.nx-applist-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(var(--accent-rgb), 0.32);
+    background: rgba(var(--accent-rgb), 0.14);
+    font-weight: 800;
+}
+
+.nx-applist-name {
+    font-size: 12px;
+    text-align: center;
+    line-height: 1.25;
+}
+
+@media (max-width: 1220px) {
+    .nx-applist-entities {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 980px) {
+    .nx-monitor-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nx-applist-overlay {
+        padding: 12px;
+    }
+
+    .nx-applist-panel {
+        width: 100%;
+        max-height: calc(100vh - 132px);
+        border-radius: 14px;
+    }
+
+    .nx-applist-entities {
+        grid-template-columns: 1fr;
+    }
+
+    .nx-applist-grid {
+        grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+        gap: 8px;
+    }
+}
+
+/* ===== WINDOWS ===== */
+.nx-window {
+    position: absolute;
+    z-index: var(--z-window-base);
+
+    display: flex;
+    flex-direction: column;
+
+    border-radius: var(--r-lg);
+    border: 1px solid var(--border);
+    background: var(--panel);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+
+    user-select: none;
+    transition: box-shadow var(--t), border-color var(--t), transform var(--t);
+}
+
+.nx-window.is-minimized {
+    display: none;
+}
+
+.nx-window.is-maximized {
+    left: 14px;
+    top: 14px;
+    width: calc(100vw - 28px) !important;
+    height: calc(100vh - 98px) !important;
+    transform: translate(0, 0) !important;
+}
+
+.nx-window.is-active {
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, 0.58), 0 0 0 1px rgba(34, 211, 238, 0.10);
+}
+
+.nx-titlebar {
+    height: 46px;
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    cursor: grab;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nx-title-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nx-icon {
+    width: 22px;
+    height: 22px;
+
+    display: grid;
+    place-items: center;
+
+    border-radius: 8px;
+    border: 1px solid rgba(34, 211, 238, 0.22);
+    background: rgba(34, 211, 238, 0.10);
+    color: var(--accent2);
+    font-weight: 800;
+}
+
+.nx-title {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.nx-title-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.nx-btn {
+    width: 36px;
+    height: 28px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    cursor: pointer;
+    transition: transform var(--t), background var(--t), border-color var(--t);
+}
+
+.nx-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.10);
+}
+
+.nx-btn-danger:hover {
+    border-color: rgba(251, 113, 133, 0.55);
+    background: rgba(251, 113, 133, 0.18);
+}
+
+.nx-body {
+    flex: 1;
+    padding: 12px;
+    overflow: auto;
+    user-select: text;
+}
+
+.nx-resize {
+    position: absolute;
+    right: 6px;
+    bottom: 6px;
+    width: 16px;
+    height: 16px;
+    opacity: 0.65;
+    cursor: se-resize;
+    border-right: 2px solid rgba(255, 255, 255, 0.20);
+    border-bottom: 2px solid rgba(255, 255, 255, 0.20);
+}
+
+/* Shared utility classes used by weather/location app content. */
+.nx-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.nx-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.nx-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nx-item {
+    padding: 10px;
+    border-radius: var(--r-md);
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.nx-item:hover {
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.nx-item-action {
+    cursor: pointer;
+}
+
+.nx-form {
+    margin: 14px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nx-input {
+    flex: 1;
+    min-width: 200px;
+    height: 36px;
+    padding: 0 10px;
+
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.20);
+
+    color: var(--text);
+    outline: none;
+}
+
+.nx-input:focus {
+    border-color: rgba(var(--accent-rgb), 0.50);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.14);
+}
+
+.nx-set-row {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.nx-set-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--text);
+}
+
+.nx-set-toggle input[type="checkbox"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 44px;
+    height: 24px;
+    margin: 0;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.08);
+    position: relative;
+    cursor: pointer;
+    transition: border-color var(--t), background var(--t);
+}
+
+.nx-set-toggle input[type="checkbox"]::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.86);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.45);
+    transition: transform var(--t), background var(--t);
+}
+
+.nx-set-toggle input[type="checkbox"]:hover {
+    border-color: rgba(var(--accent-rgb), 0.45);
+}
+
+.nx-set-toggle input[type="checkbox"]:checked {
+    border-color: rgba(var(--accent-rgb), 0.55);
+    background: rgba(var(--accent-rgb), 0.28);
+}
+
+.nx-set-toggle input[type="checkbox"]:checked::before {
+    transform: translateX(20px);
+    background: #ffffff;
+}
+
+.nx-input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 8px;
+    padding: 0;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--accent-rgb), 0.24);
+    background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.40), rgba(255, 255, 255, 0.10));
+    cursor: pointer;
+}
+
+.nx-input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--accent-rgb), 0.70);
+    background: rgba(var(--accent-rgb), 0.90);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.18);
+}
+
+.nx-input[type="range"]::-moz-range-thumb {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1px solid rgba(var(--accent-rgb), 0.70);
+    background: rgba(var(--accent-rgb), 0.90);
+    box-shadow: 0 0 0 4px rgba(var(--accent-rgb), 0.18);
+}
+
+select.nx-input {
+    appearance: none;
+    -webkit-appearance: none;
+    min-height: 40px;
+    padding-right: 38px;
+    font-size: 13.5px;
+    background-image:
+        linear-gradient(45deg, transparent 50%, rgba(var(--accent-rgb), 0.80) 50%),
+        linear-gradient(135deg, rgba(var(--accent-rgb), 0.80) 50%, transparent 50%);
+    background-position:
+        calc(100% - 17px) 50%,
+        calc(100% - 11px) 50%;
+    background-size: 6px 6px, 6px 6px;
+    background-repeat: no-repeat;
+}
+
+select.nx-input option {
+    background: #0f1622;
+    color: var(--text);
+}
+
+html[data-theme="amber"] select.nx-input option {
+    background: #1a1207;
+}
+
+html[data-theme="mono"] select.nx-input option {
+    background: #0f131a;
+}
+
+.nx-settings .nx-input:hover,
+.nx-quick-panel .nx-input:hover {
+    border-color: rgba(var(--accent-rgb), 0.35);
+}
+
+/* ===== TERMINAL (Nexus Shell) ===== */
+.nx-term,
+.nx-terminal {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 13px;
+    line-height: 1.45;
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.nx-term-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.10);
+}
+
+.nx-term-title {
+    color: var(--accent2);
+    letter-spacing: 0.08em;
+    font-weight: 800;
+}
+
+.nx-term-meta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.nx-term-meta .pill {
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.nx-term-output {
+    flex: 1;
+    overflow: auto;
+    padding: 8px;
+
+    border-radius: var(--r-md);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(0, 0, 0, 0.22);
+}
+
+.nx-term-line {
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.nx-term-pre,
+.nx-term pre {
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.nx-term-row,
+.nx-term-inputrow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nx-term-prompt {
+    color: rgba(34, 211, 238, 0.90);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.nx-term-field {
+    flex: 1;
+    min-width: 220px;
+    display: flex;
+}
+
+.nx-term-input,
+.nx-term input,
+.nx-term textarea {
+    all: unset;
+    box-sizing: border-box;
+    appearance: none;
+    -webkit-appearance: none;
+
+    flex: 1;
+    min-width: 220px;
+    width: 100%;
+    height: 34px;
+    padding: 0 10px;
+
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(0, 0, 0, 0.28);
+
+    color: rgba(255, 255, 255, 0.94);
+    caret-color: rgba(34, 211, 238, 0.95);
+}
+
+.nx-term-input:focus,
+.nx-term input:focus,
+.nx-term textarea:focus {
+    border-color: rgba(34, 211, 238, 0.45);
+    box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.12);
+}
+
+.nx-term ::selection,
+.nx-terminal ::selection {
+    background: rgba(34, 211, 238, 0.25);
+}
+
+/* ===== BOOT SHELL ===== */
+#boot {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    display: flex;
+    align-items: stretch;
+    justify-content: stretch;
+    padding: 0;
+
+    color: var(--text);
+    background:
+        radial-gradient(1200px 720px at 16% 12%, rgba(var(--accent-rgb), 0.22), transparent 62%),
+        radial-gradient(980px 640px at 84% 84%, rgba(52, 211, 153, 0.14), transparent 62%),
+        linear-gradient(180deg, #050a12, #03070d);
+    opacity: 1;
+    transition: opacity 420ms var(--ease);
+}
+
+#boot.is-exit {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.boot-shell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 16px 20px 14px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    border-radius: 0;
+    border: none;
+    background: linear-gradient(180deg, rgba(7, 12, 18, 0.80), rgba(3, 8, 14, 0.88));
+    backdrop-filter: blur(16px);
+    box-shadow: none;
+    font-family: "Ubuntu Sans", Roboto, system-ui, sans-serif;
+}
+
+.boot-shell::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.24;
+    background:
+        radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.17) 1px, transparent 0);
+    background-size: 3px 3px;
+}
+
+.boot-shell::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 100% at 50% 50%, transparent 52%, rgba(0, 0, 0, 0.44) 100%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(0, 0, 0, 0.12));
+}
+
+.boot-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.boot-particle {
+    position: absolute;
+    width: var(--size, 2px);
+    height: var(--size, 2px);
+    border-radius: 999px;
+    opacity: 0;
+    background: rgba(var(--accent-rgb), 0.7);
+    box-shadow: 0 0 8px rgba(var(--accent-rgb), 0.45);
+    animation: boot-particle-float var(--dur, 18s) linear infinite;
+}
+
+@keyframes boot-particle-float {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, 18px, 0);
+    }
+
+    20% {
+        opacity: 0.42;
+    }
+
+    80% {
+        opacity: 0.12;
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate3d(var(--drift, 0px), -30px, 0);
+    }
+}
+
+.boot-top {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    opacity: 1;
+    transition: opacity 260ms var(--ease), transform 260ms var(--ease);
+}
+
+#boot.is-login .boot-top {
+    display: none;
+}
+
+.boot-brand {
+    font-size: 14px;
+    font-weight: 800;
+    letter-spacing: 0.18em;
+    color: var(--accent2);
+    text-shadow: 0 0 12px rgba(var(--accent-rgb), 0.30);
+}
+
+.boot-sub {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.60);
+}
+
+.boot-view-btn {
+    height: 34px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    cursor: pointer;
+    transition: border-color var(--t), background var(--t), box-shadow var(--t);
+}
+
+.boot-view-btn:hover {
+    border-color: rgba(var(--accent-rgb), 0.60);
+    background: rgba(var(--accent-rgb), 0.14);
+    box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.12);
+}
+
+.boot-stage {
+    position: relative;
+    z-index: 2;
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 1;
+    transform: none;
+    transition: opacity 340ms var(--ease), transform 340ms var(--ease);
+}
+
+.boot-stage.is-fade-out {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.99);
+    pointer-events: none;
+}
+
+.boot-modern {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.boot-percent {
+    width: 88px;
+    height: 88px;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--accent-rgb), 0.40);
+    background: rgba(var(--accent-rgb), 0.12);
+    display: grid;
+    place-items: center;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--accent2);
+}
+
+.boot-log-wrap {
+    flex: 1;
+    min-height: 0;
+}
+
+.boot-log-wrap.is-hidden {
+    display: none;
+}
+
+.boot-log {
+    height: 100%;
+    overflow: auto;
+    padding: 8px 6px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(0, 0, 0, 0.22);
+
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 12.5px;
+    line-height: 1.45;
+}
+
+.boot-line {
+    display: flex;
+    gap: 10px;
+    padding: 2px 0;
+    white-space: nowrap;
+}
+
+.boot-time {
+    min-width: 62px;
+    color: rgba(255, 255, 255, 0.45);
+}
+
+.boot-tag {
+    min-width: 62px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+}
+
+.boot-tag.ok {
+    color: var(--ok);
+}
+
+.boot-tag.warn {
+    color: var(--warn);
+}
+
+.boot-tag.bad {
+    color: var(--bad);
+}
+
+.boot-tag.info {
+    color: var(--accent2);
+}
+
+.boot-msg {
+    color: rgba(255, 255, 255, 0.82);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.boot-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.boot-progress {
+    flex: 1;
+}
+
+.boot-bar {
+    height: 10px;
+    overflow: hidden;
+
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.boot-bar-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(34, 211, 238, 0.85), rgba(52, 211, 153, 0.75));
+    transition: width 180ms var(--ease);
+}
+
+.boot-hint {
+    margin-top: 6px;
+    color: rgba(255, 255, 255, 0.60);
+    font-size: 12px;
+    line-height: 1.45;
+    white-space: normal;
+}
+
+.boot-enter {
+    height: 38px;
+    padding: 0 14px;
+
+    border-radius: 12px;
+    border: 1px solid rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.14);
+
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    transition: transform var(--t), background var(--t), border-color var(--t);
+}
+
+.boot-enter:hover {
+    transform: translateY(-1px);
+    border-color: rgba(34, 211, 238, 0.55);
+    background: rgba(34, 211, 238, 0.20);
+}
+
+.boot-anykey {
+    color: rgba(255, 255, 255, 0.65);
+    font-family: inherit;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+}
+
+.boot-stage-login {
+    position: absolute;
+    inset: 0;
+    z-index: 4;
+    min-height: 0;
+    display: grid;
+    place-items: center;
+    padding: 24px;
+    opacity: 0;
+    transform: translateY(16px) scale(0.985);
+    transition: opacity 360ms var(--ease), transform 360ms var(--ease);
+}
+
+.boot-stage-login.is-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.boot-login-panel {
+    position: relative;
+    width: min(420px, calc(100vw - 38px));
+    padding: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+
+    border: none;
+    border-radius: 0;
+    background: transparent;
+    backdrop-filter: none;
+    box-shadow: none;
+}
+
+.boot-login-brand {
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.26em;
+    color: rgba(var(--accent-rgb), 0.88);
+    text-transform: uppercase;
+    text-shadow: 0 0 18px rgba(var(--accent-rgb), 0.35);
+}
+
+.boot-login-title {
+    margin: 2px 0 0;
+    font-size: 34px;
+    font-weight: 800;
+    line-height: 1.06;
+    letter-spacing: 0.02em;
+}
+
+.boot-login-sub {
+    margin-bottom: 8px;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+}
+
+.boot-login-locale {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    width: 50px;
+    height: 30px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.24);
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.94);
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: border-color var(--t), background var(--t), box-shadow var(--t);
+}
+
+.boot-login-locale:hover {
+    border-color: rgba(var(--accent-rgb), 0.52);
+    background: rgba(var(--accent-rgb), 0.14);
+    box-shadow: 0 0 0 2px rgba(var(--accent-rgb), 0.12);
+}
+
+.boot-login-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    margin-bottom: 8px;
+    width: 100%;
+}
+
+.boot-login-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.74);
+    margin-top: 3px;
+    text-align: left;
+}
+
+.boot-login-input {
+    all: unset;
+    box-sizing: border-box;
+    width: 100%;
+    height: 42px;
+    padding: 0 13px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.20);
+    background: rgba(3, 8, 14, 0.44);
+    color: rgba(255, 255, 255, 0.95);
+    font-size: 14px;
+    transition: border-color var(--t), box-shadow var(--t), background var(--t);
+}
+
+.boot-login-input:focus {
+    border-color: rgba(var(--accent-rgb), 0.62);
+    background: rgba(4, 10, 18, 0.58);
+    box-shadow:
+        0 0 0 3px rgba(var(--accent-rgb), 0.17),
+        0 0 22px rgba(var(--accent-rgb), 0.18);
+}
+
+.boot-login-submit {
+    height: 42px;
+    border-radius: 12px;
+    border: 1px solid rgba(var(--accent-rgb), 0.56);
+    background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.32), rgba(var(--accent-rgb), 0.17));
+    color: rgba(255, 255, 255, 0.96);
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: transform var(--t), border-color var(--t), box-shadow var(--t), background var(--t);
+}
+
+.boot-login-submit:hover {
+    transform: translateY(-1px);
+    border-color: rgba(var(--accent-rgb), 0.75);
+    box-shadow: 0 12px 26px rgba(var(--accent-rgb), 0.22);
+    background: linear-gradient(180deg, rgba(var(--accent-rgb), 0.42), rgba(var(--accent-rgb), 0.24));
+}
+
+.boot-login-status {
+    min-height: 18px;
+    font-size: 12px;
+    line-height: 1.35;
+}
+
+.boot-login-status[data-level="neutral"] {
+    color: rgba(255, 255, 255, 0.70);
+}
+
+.boot-login-status[data-level="ok"] {
+    color: var(--ok);
+}
+
+.boot-login-status[data-level="bad"] {
+    color: var(--bad);
+}
+
+.boot-login-panel.is-error {
+    animation: boot-login-shake 260ms ease;
+}
+
+@keyframes boot-login-shake {
+    0% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-6px);
+    }
+
+    55% {
+        transform: translateX(5px);
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+/* ===== SMALL SCREENS ===== */
+@media (max-width: 980px) {
+    .boot-modern {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .boot-percent {
+        width: 72px;
+        height: 72px;
+        font-size: 20px;
+    }
+
+    .boot-login-panel {
+        width: min(420px, calc(100vw - 24px));
+        padding: 0;
+    }
+
+    .boot-login-title {
+        font-size: 28px;
+    }
+
+    .nx-gadget {
+        width: min(320px, calc(100vw - 28px));
+    }
+
+    .nx-widget-dock {
+        inset: 0;
+    }
+
+    .nx-widget-menu {
+        right: 14px;
+        bottom: 84px;
+        width: min(230px, calc(100vw - 28px));
+    }
+
+    #taskbar-brand {
+        display: inline-flex;
+        align-items: center;
+        padding: 0 8px;
+    }
+
+    #taskbar-weather .muted {
+        display: none;
+    }
+
+    .nx-clock-panel {
+        right: 14px;
+        bottom: 84px;
+        width: calc(100vw - 28px);
+    }
+
+    .nx-power-menu {
+        left: 14px;
+        right: 14px;
+        width: auto;
+        bottom: 84px;
+    }
+}
+
+/* ===== GAMES ===== */
+.nx-game {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    user-select: none;
+}
+
+.nx-game-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.nx-game-stats {
+    display: flex;
+    gap: 8px;
+}
+
+.nx-badge {
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, .05);
+    border-radius: 999px;
+    padding: 6px 10px;
+    font-size: 12px;
+}
+
+.nx-game-canvas {
+    width: 100%;
+    max-width: 640px;
+    aspect-ratio: 1 / 1;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, .22);
+}
+
+.nx-game-bottom {
+    font-size: 12px;
+    opacity: .75;
+}
+
+/* ===== 2048 ===== */
+
+.nx-mini-btn {
+    height: 32px;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, .05);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform var(--t), background var(--t), border-color var(--t);
+}
+
+.nx-mini-btn:hover {
+    transform: translateY(-1px);
+    border-color: rgba(34, 211, 238, .35);
+    background: rgba(34, 211, 238, .08);
+}
+
+.nx-2048-wrap {
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+}
+
+.nx-2048-board {
+    width: min(420px, 100%);
+    aspect-ratio: 1 / 1;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, .22);
+}
+
+.nx-2048-cell {
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, .10);
+    background: rgba(255, 255, 255, .04);
+
+    font-family: "Ubuntu Sans", system-ui;
+    font-weight: 900;
+    font-size: 26px;
+    letter-spacing: .02em;
+    color: rgba(255, 255, 255, .88);
+
+    user-select: none;
+}
+
+.nx-2048-cell.pop {
+    animation: nx-pop 120ms var(--ease);
+}
+
+@keyframes nx-pop {
+    from {
+        transform: scale(.96);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* value styling via data-v */
+.nx-2048-cell[data-v="0"] {
+    background: rgba(255, 255, 255, .03);
+    color: transparent;
+    border-color: rgba(255, 255, 255, .06);
+}
+
+.nx-2048-cell[data-v="2"] {
+    background: rgba(34, 211, 238, .08);
+    border-color: rgba(34, 211, 238, .16);
+}
+
+.nx-2048-cell[data-v="4"] {
+    background: rgba(34, 211, 238, .12);
+    border-color: rgba(34, 211, 238, .22);
+}
+
+.nx-2048-cell[data-v="8"] {
+    background: rgba(6, 182, 212, .18);
+    border-color: rgba(6, 182, 212, .28);
+}
+
+.nx-2048-cell[data-v="16"] {
+    background: rgba(52, 211, 153, .14);
+    border-color: rgba(52, 211, 153, .24);
+}
+
+.nx-2048-cell[data-v="32"] {
+    background: rgba(52, 211, 153, .18);
+    border-color: rgba(52, 211, 153, .30);
+}
+
+.nx-2048-cell[data-v="64"] {
+    background: rgba(52, 211, 153, .22);
+    border-color: rgba(52, 211, 153, .36);
+}
+
+.nx-2048-cell[data-v="128"] {
+    background: rgba(251, 191, 36, .14);
+    border-color: rgba(251, 191, 36, .24);
+}
+
+.nx-2048-cell[data-v="256"] {
+    background: rgba(251, 191, 36, .18);
+    border-color: rgba(251, 191, 36, .30);
+}
+
+.nx-2048-cell[data-v="512"] {
+    background: rgba(251, 191, 36, .22);
+    border-color: rgba(251, 191, 36, .36);
+}
+
+.nx-2048-cell[data-v="1024"] {
+    background: rgba(251, 113, 133, .16);
+    border-color: rgba(251, 113, 133, .28);
+}
+
+.nx-2048-cell[data-v="2048"] {
+    background: rgba(251, 113, 133, .22);
+    border-color: rgba(251, 113, 133, .38);
+}
+
+.nx-2048-overlay {
+    position: absolute;
+    inset: 0;
+    display: none;
+    place-items: center;
+    backdrop-filter: blur(8px);
+    background: rgba(0, 0, 0, .22);
+    border-radius: 16px;
+}
+
+.nx-2048-overlay.is-visible {
+    display: grid;
+}
+
+.nx-2048-overlay-card {
+    width: min(320px, 90%);
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, .72);
+    box-shadow: var(--shadow2);
+    padding: 14px;
+    text-align: center;
+}
+
+.nx-2048-title {
+    font-family: "Ubuntu Sans", system-ui;
+    font-weight: 900;
+    letter-spacing: .06em;
+    font-size: 18px;
+    margin-bottom: 6px;
+}
+
+.nx-2048-actions {
+    margin-top: 12px;
+    display: flex;
+    justify-content: center;
+}
+
+/* ===== TETRIS ===== */
+.nx-tetris-wrap {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+    gap: 14px;
+}
+
+.nx-tetris-canvas {
+    width: min(100%, 340px);
+    aspect-ratio: 1 / 2;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, .24);
+}
+
+.nx-tetris-side {
+    width: 140px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.nx-tetris-next {
+    width: 120px;
+    height: 120px;
+    align-self: center;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, .24);
+}
+
+/* ===== PIPELINES ===== */
+.nx-pipelines {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nx-pipe-repo {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(220px, 300px) 1fr;
+    gap: 10px;
+}
+
+.nx-pipe-list {
+    min-height: 0;
+    overflow: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.20);
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nx-pipe-item {
+    width: 100%;
+    text-align: left;
+    padding: 9px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform var(--t), border-color var(--t), background var(--t);
+}
+
+.nx-pipe-item:hover {
+    transform: translateY(-1px);
+    border-color: rgba(var(--accent-rgb), 0.40);
+    background: rgba(var(--accent-rgb), 0.12);
+}
+
+.nx-pipe-item.is-active {
+    border-color: rgba(var(--accent-rgb), 0.62);
+    background: rgba(var(--accent-rgb), 0.16);
+    box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.15) inset;
+}
+
+.nx-pipe-item:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.nx-pipe-item-title {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    margin-bottom: 2px;
+}
+
+.nx-pipe-item-meta {
+    font-size: 12px;
+}
+
+.nx-pipe-main {
+    min-width: 0;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nx-pipe-toolbar {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+}
+
+.nx-pipe-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nx-pipe-progress-track {
+    flex: 1;
+    height: 10px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden;
+}
+
+.nx-pipe-progress-fill {
+    width: 0;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(var(--accent-rgb), 0.70), rgba(var(--accent-rgb), 0.35));
+    transition: width var(--t);
+}
+
+.nx-pipe-grid {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(260px, 1fr) 1.3fr;
+    gap: 10px;
+}
+
+.nx-pipe-stages,
+.nx-pipe-logs {
+    min-height: 0;
+    overflow: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.20);
+    padding: 10px;
+}
+
+.nx-pipe-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nx-pipe-stage+.nx-pipe-stage {
+    margin-top: 8px;
+}
+
+.nx-pipe-log-row {
+    display: grid;
+    grid-template-columns: 68px 54px 1fr;
+    gap: 8px;
+    align-items: baseline;
+    padding: 4px 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 12px;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.nx-pipe-log-row:last-child {
+    border-bottom: none;
+}
+
+.nx-pipe-log-time {
+    color: var(--muted);
+}
+
+.nx-pipe-log-lvl {
+    color: var(--accent2);
+    font-weight: 700;
+}
+
+.nx-pipe-status.is-idle {
+    color: var(--muted);
+}
+
+.nx-pipe-status.is-running {
+    color: var(--warn);
+}
+
+.nx-pipe-status.is-success {
+    color: var(--ok);
+}
+
+.nx-pipe-status.is-failed,
+.nx-pipe-status.is-canceled {
+    color: var(--bad);
+}
+
+@media (max-width: 1100px) {
+    .nx-pipe-repo {
+        grid-template-columns: 1fr;
+    }
+
+    .nx-pipe-list {
+        max-height: 172px;
+    }
+
+    .nx-pipe-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== APP UI ===== */
+.nx-explorer,
+.nx-settings,
+.nx-notify-center,
+.nx-appstore,
+.nx-process,
+.nx-notes {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nx-explorer-head {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nx-explorer-path {
+    flex: 1;
+    min-width: 0;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.04);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 12px;
+}
+
+.nx-explorer-main {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) 1.2fr;
+    gap: 10px;
+}
+
+.nx-explorer-list,
+.nx-explorer-preview {
+    min-height: 0;
+    overflow: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.20);
+    padding: 8px;
+}
+
+.nx-explorer-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-align: left;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text);
+    cursor: pointer;
+    margin-bottom: 6px;
+}
+
+.nx-explorer-item:hover {
+    border-color: rgba(34, 211, 238, 0.35);
+    background: rgba(34, 211, 238, 0.08);
+}
+
+.nx-explorer-preview {
+    margin: 0;
+    white-space: pre-wrap;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+    font-size: 12px;
+}
+
+.nx-settings {
+    min-height: 0;
+}
+
+.nx-settings-shell {
+    flex: 1;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: minmax(210px, 250px) 1fr;
+    gap: 12px;
+}
+
+.nx-settings-nav {
+    min-height: 0;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+        rgba(0, 0, 0, 0.20);
+}
+
+.nx-settings-nav-head {
+    margin-bottom: 4px;
+    padding: 8px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nx-settings-nav-title {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    margin-bottom: 2px;
+}
+
+.nx-settings-nav-item {
+    width: 100%;
+    height: 38px;
+    padding: 0 12px;
+    text-align: left;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform var(--t), border-color var(--t), background var(--t);
+}
+
+.nx-settings-nav-item:hover {
+    transform: translateY(-1px);
+    border-color: rgba(var(--accent-rgb), 0.40);
+    background: rgba(var(--accent-rgb), 0.11);
+}
+
+.nx-settings-nav-item.is-active {
+    border-color: rgba(var(--accent-rgb), 0.62);
+    background: rgba(var(--accent-rgb), 0.18);
+    box-shadow: 0 0 0 1px rgba(var(--accent-rgb), 0.16) inset;
+    font-weight: 700;
+}
+
+.nx-settings-main {
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nx-settings-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 10px 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background:
+        radial-gradient(140% 140% at 0% 0%, rgba(var(--accent-rgb), 0.12), transparent 58%),
+        rgba(0, 0, 0, 0.20);
+}
+
+.nx-settings-title {
+    margin: 0 0 3px 0;
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 18px;
+    letter-spacing: 0.04em;
+}
+
+.nx-settings-state {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: flex-end;
+}
+
+.nx-settings-panels {
+    flex: 1;
+    min-height: 0;
+    overflow: auto;
+}
+
+.nx-settings-panel {
+    display: none;
+    grid-template-columns: repeat(2, minmax(240px, 1fr));
+    gap: 10px;
+}
+
+.nx-settings-panel.is-active {
+    display: grid;
+}
+
+.nx-settings-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 110px;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+        rgba(0, 0, 0, 0.20);
+}
+
+.nx-settings-card-title {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    color: var(--accent2);
+}
+
+.nx-settings-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.nx-settings-inline-badges {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.nx-settings-kv {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 7px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.nx-settings-kv:first-of-type {
+    border-top: none;
+}
+
+.nx-settings-kv b {
+    text-align: right;
+    max-width: 62%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.nx-settings-card-wide {
+    grid-column: 1 / -1;
+}
+
+.nx-settings-card .nx-set-row .nx-input {
+    margin-top: 3px;
+}
+
+.nx-settings select.nx-input {
+    height: 44px;
+    min-height: 44px;
+    padding-right: 42px;
+    font-size: 14px;
+    border-radius: 12px;
+    background-position:
+        calc(100% - 18px) 50%,
+        calc(100% - 11px) 50%;
+    background-size: 7px 7px, 7px 7px;
+}
+
+/* ===== CV ===== */
+.nx-cv {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nx-cv-hero {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background:
+        radial-gradient(140% 130% at 0% 0%, rgba(var(--accent-rgb), 0.18), transparent 56%),
+        rgba(0, 0, 0, 0.20);
+}
+
+.nx-cv-kicker {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    font-weight: 700;
+}
+
+.nx-cv-name {
+    margin: 5px 0 2px 0;
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 28px;
+    line-height: 1.05;
+}
+
+.nx-cv-role {
+    font-size: 13px;
+}
+
+.nx-cv-contact {
+    min-width: 240px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: flex-end;
+}
+
+.nx-cv-contact a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 12px;
+}
+
+.nx-cv-contact a:hover {
+    color: var(--accent2);
+}
+
+.nx-cv-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.nx-cv-layout {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(260px, 1fr));
+    gap: 10px;
+}
+
+.nx-cv-card {
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+        rgba(0, 0, 0, 0.18);
+}
+
+.nx-cv-card-span2 {
+    grid-column: span 2;
+}
+
+.nx-cv-card h3 {
+    margin: 0 0 8px 0;
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+}
+
+.nx-cv-subsection-title {
+    margin: 10px 0 6px 0;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    color: var(--accent2);
+    text-transform: uppercase;
+}
+
+.nx-cv-card p {
+    margin: 0;
+    line-height: 1.55;
+}
+
+.nx-cv-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nx-cv-timeline-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 10px;
+    padding: 8px 10px 8px 12px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nx-cv-timeline-item::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 6px;
+    bottom: 6px;
+    width: 3px;
+    border-radius: 999px;
+    background: rgba(var(--accent-rgb), 0.75);
+}
+
+.nx-cv-time {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: fit-content;
+    padding: 3px 8px;
+    border-radius: 999px;
+    border: 1px solid rgba(var(--accent-rgb), 0.38);
+    background: rgba(var(--accent-rgb), 0.14);
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.nx-cv-skills {
+    margin: 0;
+    padding-left: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.nx-cv-projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(220px, 1fr));
+    gap: 10px;
+}
+
+.nx-cv-project {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.nx-cv-project h4 {
+    margin: 0 0 4px 0;
+    font-size: 13px;
+}
+
+.nx-cv-project p {
+    margin-top: 6px;
+}
+
+.nx-cv-foot {
+    font-size: 12px;
+}
+
+@media (max-width: 980px) {
+    .nx-settings-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .nx-settings-nav {
+        max-height: 190px;
+    }
+
+    .nx-settings-head {
+        flex-direction: column;
+    }
+
+    .nx-settings-state {
+        justify-content: flex-start;
+    }
+
+    .nx-settings-panel,
+    .nx-settings-panel.is-active {
+        grid-template-columns: 1fr;
+    }
+
+    .nx-cv-hero {
+        flex-direction: column;
+    }
+
+    .nx-cv-contact {
+        min-width: 0;
+        align-items: flex-start;
+    }
+
+    .nx-cv-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .nx-cv-card-span2 {
+        grid-column: auto;
+    }
+
+    .nx-cv-timeline-item {
+        grid-template-columns: 1fr;
+    }
+
+    .nx-cv-projects {
+        grid-template-columns: 1fr;
+    }
+}
+
+.nx-notes-area {
+    flex: 1;
+    min-height: 220px;
+    resize: none;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.20);
+    color: var(--text);
+    padding: 10px;
+    outline: none;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.nx-calc {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nx-calc-display {
+    height: 56px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(0, 0, 0, 0.22);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 12px;
+    font-size: 22px;
+    font-weight: 700;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+}
+
+.nx-calc-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+}
+
+.nx-calc-btn {
+    height: 44px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text);
+    cursor: pointer;
+}
+
+.nx-calc-btn:hover {
+    background: rgba(34, 211, 238, 0.10);
+    border-color: rgba(34, 211, 238, 0.35);
+}
+
+.nx-note-warn {
+    border-color: rgba(251, 191, 36, 0.40);
+}
+
+.nx-note-error {
+    border-color: rgba(251, 113, 133, 0.45);
+}
+
+/* ===== QUICK ACTIONS / TOASTS ===== */
+.nx-clock-panel {
+    position: absolute;
+    right: 26px;
+    bottom: 86px;
+    width: min(420px, calc(100vw - 28px));
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.86);
+    backdrop-filter: blur(16px);
+    box-shadow: var(--shadow2);
+    z-index: 9990;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+    pointer-events: none;
+    transition: opacity var(--t), transform var(--t);
+}
+
+.nx-clock-panel.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.nx-clock-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.nx-clock-time {
+    font-family: "Ubuntu Sans", system-ui, sans-serif;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 1;
+    letter-spacing: 0.03em;
+}
+
+.nx-clock-date {
+    margin-top: 4px;
+    font-size: 12px;
+}
+
+.nx-clock-section {
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(255, 255, 255, 0.03);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.nx-clock-nav {
+    display: grid;
+    grid-template-columns: 30px minmax(120px, auto) 30px;
+    align-items: center;
+    gap: 6px;
+}
+
+.nx-clock-nav .nx-mini-btn {
+    width: 30px;
+    padding: 0;
+}
+
+.nx-clock-cal-grid {
+    margin-top: 0;
+}
+
+.nx-clock-cal-grid .nx-cal-day {
+    height: 28px;
+}
+
+.nx-clock-notes {
+    max-height: 210px;
+    overflow: auto;
+    padding-right: 2px;
+}
+
+.nx-clock-notes .nx-item {
+    padding: 8px;
+}
+
+#cp-clear:disabled {
+    opacity: 0.45;
+    cursor: default;
+}
+
+.nx-quick-panel {
+    position: absolute;
+    right: 26px;
+    bottom: 86px;
+    width: min(320px, calc(100vw - 28px));
+    padding: 12px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.82);
+    backdrop-filter: blur(14px);
+    box-shadow: var(--shadow2);
+    z-index: 210;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(10px) scale(0.985);
+    pointer-events: none;
+    transition: opacity var(--t), transform var(--t);
+}
+
+.nx-quick-panel.is-open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+}
+
+.nx-quick-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.nx-quick-head .nx-mini-btn {
+    width: 30px;
+    padding: 0;
+}
+
+.nx-toast-host {
+    position: fixed;
+    right: 18px;
+    bottom: 84px;
+    width: min(360px, calc(100vw - 24px));
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    z-index: 9998;
+    pointer-events: none;
+}
+
+.nx-toast {
+    pointer-events: auto;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity var(--t), transform var(--t);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    background: rgba(10, 14, 20, 0.90);
+    padding: 10px;
+    box-shadow: var(--shadow2);
+}
+
+.nx-toast.is-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.nx-toast-title {
+    font-weight: 700;
+    color: var(--text);
+}
+
+.nx-toast-msg {
+    margin-top: 2px;
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.nx-toast-warn {
+    border-color: rgba(251, 191, 36, 0.45);
+}
+
+.nx-toast-error {
+    border-color: rgba(251, 113, 133, 0.5);
+}
+
+/* ===== THEME VARIANTS ===== */
+html[data-theme="amber"] {
+    --accent: #f59e0b;
+    --accent2: #fbbf24;
+    --accent-rgb: 251, 191, 36;
+    --ok: #a3e635;
+}
+
+html[data-theme="amber"] #desktop {
+    background:
+        radial-gradient(900px 520px at 20% 15%, rgba(251, 191, 36, 0.18), transparent 60%),
+        radial-gradient(900px 520px at 80% 20%, rgba(245, 158, 11, 0.12), transparent 60%),
+        radial-gradient(900px 520px at 50% 90%, rgba(180, 83, 9, 0.10), transparent 60%),
+        linear-gradient(180deg, #160f06, #0c0905);
+}
+
+html[data-theme="amber"] .nx-launch,
+html[data-theme="amber"] #taskbar-brand,
+html[data-theme="amber"] .nx-gadget-title,
+html[data-theme="amber"] .nx-term-title,
+html[data-theme="amber"] .nx-term-prompt,
+html[data-theme="amber"] .boot-tag.info {
+    color: #fbbf24;
+}
+
+html[data-theme="amber"] .nx-icon {
+    background: rgba(251, 191, 36, 0.14);
+    border-color: rgba(251, 191, 36, 0.35);
+    color: #fbbf24;
+}
+
+html[data-theme="amber"] .nx-launch:hover,
+html[data-theme="amber"] .nx-btn:hover,
+html[data-theme="amber"] .nx-taskbtn:hover,
+html[data-theme="amber"] .nx-gadget-btn:hover,
+html[data-theme="amber"] .nx-item:hover,
+html[data-theme="amber"] .nx-calc-btn:hover {
+    border-color: rgba(251, 191, 36, 0.45);
+    background: rgba(251, 191, 36, 0.14);
+}
+
+html[data-theme="mono"] {
+    --accent: #cbd5e1;
+    --accent2: #e2e8f0;
+    --accent-rgb: 226, 232, 240;
+    --ok: #94a3b8;
+}
+
+html[data-theme="mono"] #desktop {
+    background:
+        radial-gradient(900px 520px at 20% 15%, rgba(226, 232, 240, 0.13), transparent 60%),
+        radial-gradient(900px 520px at 80% 20%, rgba(148, 163, 184, 0.12), transparent 60%),
+        radial-gradient(900px 520px at 50% 90%, rgba(203, 213, 225, 0.09), transparent 60%),
+        linear-gradient(180deg, #0b0f16, #07090d);
+}
+
+html[data-theme="mono"] .nx-launch,
+html[data-theme="mono"] #taskbar-brand,
+html[data-theme="mono"] .nx-gadget-title,
+html[data-theme="mono"] .nx-term-title,
+html[data-theme="mono"] .nx-term-prompt,
+html[data-theme="mono"] .boot-tag.info {
+    color: #e2e8f0;
+}
+
+html[data-theme="mono"] .nx-icon {
+    background: rgba(226, 232, 240, 0.10);
+    border-color: rgba(226, 232, 240, 0.28);
+    color: #e2e8f0;
+}
+
+html[data-theme="mono"] .nx-launch:hover,
+html[data-theme="mono"] .nx-btn:hover,
+html[data-theme="mono"] .nx-taskbtn:hover,
+html[data-theme="mono"] .nx-gadget-btn:hover,
+html[data-theme="mono"] .nx-item:hover,
+html[data-theme="mono"] .nx-calc-btn:hover {
+    border-color: rgba(226, 232, 240, 0.40);
+    background: rgba(226, 232, 240, 0.12);
+}
+
+/* ===== OS POLISH ===== */
+body {
+    font-family: "Ubuntu Sans", Roboto, system-ui, sans-serif;
+    letter-spacing: 0.01em;
+}
+
+#desktop::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(120% 100% at 50% 100%, rgba(0, 0, 0, 0.26), transparent 62%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(0, 0, 0, 0.08));
+}
+
+#launcher,
+#taskbar,
+#gadget-panel .nx-gadget,
+.nx-window,
+.nx-quick-panel,
+.nx-applist-panel {
+    border-color: rgba(255, 255, 255, 0.13);
+    background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02)),
+        rgba(9, 13, 19, 0.76);
+}
+
+#launcher {
+    width: 82px;
+    padding: 10px 8px;
+    gap: 10px;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.nx-launch {
+    width: 54px;
+    height: 54px;
+    border-radius: 14px;
+    font-size: 17px;
+}
+
+#taskbar {
+    height: 58px;
+    border-radius: 16px;
+    padding: 0 10px;
+}
+
+#taskbar-brand {
+    font-weight: 900;
+    letter-spacing: 0.14em;
+}
+
+.nx-window {
+    border-radius: 16px;
+    backdrop-filter: blur(18px) saturate(120%);
+    box-shadow:
+        0 16px 50px rgba(0, 0, 0, 0.58),
+        0 0 0 1px rgba(255, 255, 255, 0.04) inset;
+}
+
+.nx-titlebar {
+    height: 44px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.01));
+}
+
+.nx-title {
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    font-weight: 700;
+}
+
+.nx-icon {
+    width: 20px;
+    height: 20px;
+    border-radius: 7px;
+}
+
+.nx-body {
+    padding: 14px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+}
+
+.nx-btn,
+.nx-mini-btn,
+.nx-gadget-btn,
+.nx-gadget-action,
+.nx-taskbtn,
+.nx-pill {
+    border-radius: 10px;
+}
+
+.nx-btn,
+.nx-mini-btn,
+.nx-gadget-btn,
+.nx-gadget-action,
+.nx-taskbtn,
+.nx-launch,
+.nx-pill,
+.nx-applist-item,
+.nx-settings-nav-item {
+    transition:
+        transform 160ms var(--ease),
+        border-color 160ms var(--ease),
+        background 160ms var(--ease),
+        box-shadow 160ms var(--ease);
+}
+
+.nx-applist-item {
+    min-height: 104px;
+    border-radius: 12px;
+}
+
+.nx-applist-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+}
+
+* {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(var(--accent-rgb), 0.35) rgba(255, 255, 255, 0.05);
+}
+
+*::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 999px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: rgba(var(--accent-rgb), 0.34);
+    border-radius: 999px;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+*::-webkit-scrollbar-thumb:hover {
+    background: rgba(var(--accent-rgb), 0.52);
+}
+
+/* ===== EFFECT OVERRIDES ===== */
+.nx-no-blur .nx-window,
+.nx-no-blur #taskbar,
+.nx-no-blur #launcher,
+.nx-no-blur #gadget-panel .nx-gadget,
+.nx-no-blur .boot-shell,
+.nx-no-blur .nx-quick-panel {
+    backdrop-filter: none !important;
+}
+
+.nx-no-anim *,
+.nx-no-anim *::before,
+.nx-no-anim *::after {
+    transition: none !important;
+    animation: none !important;
+}

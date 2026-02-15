@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>NEXUS // EXPE SYSTEM</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans:wght@400;600&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="resources/css/style.css?v=20260215-1" />
+</head>
+
+<body>
+
+    <!-- BOOT + DISPLAY MANAGER -->
+    <div id="boot" aria-hidden="false">
+        <div class="boot-shell" aria-live="polite">
+            <div id="boot-particles" class="boot-particles" aria-hidden="true"></div>
+            <div class="boot-top">
+                <div>
+                    <div class="boot-brand">NEXUS</div>
+                    <div class="boot-sub" id="boot-sub">Modern system boot</div>
+                </div>
+                <button id="boot-console-toggle" class="boot-view-btn" type="button">Details</button>
+            </div>
+
+            <section id="boot-stage-boot" class="boot-stage">
+                <div class="boot-modern">
+                    <div class="boot-percent" id="boot-percent">0%</div>
+                    <div class="boot-progress">
+                        <div class="boot-bar">
+                            <div id="boot-bar-fill" class="boot-bar-fill"></div>
+                        </div>
+                        <div id="boot-hint" class="boot-hint muted">Starting…</div>
+                        <div id="boot-shortcuts" class="boot-anykey">Enter = skip • D = details • F2 = language</div>
+                    </div>
+                </div>
+
+                <div id="boot-log-wrap" class="boot-log-wrap is-hidden">
+                    <div id="boot-log" class="boot-log"></div>
+                </div>
+
+                <div class="boot-bottom"></div>
+            </section>
+
+            <section id="boot-stage-login" class="boot-stage boot-stage-login" hidden>
+                <div id="boot-login-panel" class="boot-login-panel">
+                    <div class="boot-login-brand">NEXUS OS</div>
+                    <h1 id="auth-headline" class="boot-login-title">Welcome back</h1>
+                    <div id="auth-subline" class="boot-login-sub muted">Display Manager</div>
+                    <button id="boot-locale-toggle" class="boot-login-locale" type="button">CZ</button>
+
+                    <div class="boot-login-fields">
+                        <label class="boot-login-label" for="login-user" id="auth-user-label">Username</label>
+                        <input id="login-user" class="boot-login-input" autocomplete="username" autocapitalize="off"
+                            autocorrect="off" spellcheck="false" />
+
+                        <label class="boot-login-label" for="login-pass" id="auth-pass-label">Password</label>
+                        <input id="login-pass" class="boot-login-input" type="password" autocomplete="current-password"
+                            autocapitalize="off" autocorrect="off" spellcheck="false" />
+                    </div>
+
+                    <button id="boot-login-submit" class="boot-login-submit" type="button">Sign in</button>
+                    <div id="auth-status" class="boot-login-status muted">Use admin/admin or fake/fake</div>
+
+                    <div id="auth-help" class="boot-anykey">F2 = CZ/EN</div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- DESKTOP -->
+    <div id="desktop">
+
+        <div id="launcher">
+            <button id="open-terminal" class="nx-launch">>_</button>
+            <button id="open-cv" class="nx-launch">CV</button>
+            <button id="open-pipelines" class="nx-launch">⧉</button>
+            <button id="open-snake" class="nx-launch">🐍</button>
+            <button id="open-2048" class="nx-launch">2K</button>
+            <button id="open-tetris" class="nx-launch">▦</button>
+        </div>
+
+        <!-- GADGETS -->
+        <div id="gadget-panel">
+            <div class="nx-gadget" id="gadget-weather">
+                <div class="nx-gadget-title">Weather</div>
+                <div class="nx-gadget-row">
+                    <div class="nx-gadget-big" id="wx-temp">--°</div>
+                    <div class="nx-gadget-meta">
+                        <div id="wx-city" class="muted">Locating…</div>
+                        <div id="wx-desc" class="muted">--</div>
+                    </div>
+                </div>
+                <div class="nx-gadget-footer">
+                    <span id="wx-updated" class="muted">—</span>
+                    <button class="nx-gadget-btn" id="wx-refresh">↻</button>
+                </div>
+            </div>
+
+            <div class="nx-gadget" id="gadget-core">
+                <div class="nx-gadget-title">Nexus Core</div>
+                <div class="nx-gadget-kv"><span class="muted">Status</span><b class="ok">OK</b></div>
+                <div class="nx-gadget-kv"><span class="muted">Modules</span><b>3</b></div>
+                <div class="nx-gadget-kv"><span class="muted">Uptime</span><b id="nx-uptime">—</b></div>
+            </div>
+        </div>
+
+        <!-- TASKBAR -->
+        <div id="taskbar">
+            <div id="taskbar-brand">NEXUS</div>
+            <div id="taskbar-apps"></div>
+
+            <button id="taskbar-quick" class="nx-pill" title="Quick actions">⚡</button>
+
+            <button id="taskbar-notify" class="nx-pill" title="Notifications">
+                <span>🔔</span>
+                <span id="tb-notify-count" class="nx-dot">0</span>
+            </button>
+
+            <div id="taskbar-right">
+                <button id="taskbar-widgets" class="nx-pill nx-widget-dock-toggle" type="button" title="Widgets"
+                    aria-haspopup="menu" aria-expanded="false">+</button>
+
+                <button id="taskbar-weather" class="nx-pill" title="Weather">
+                    <span id="tb-wx-icon">☁</span>
+                    <span id="tb-wx-temp">--°</span>
+                    <span id="tb-wx-city" class="muted" style="margin-left:6px;">—</span>
+                </button>
+
+                <div id="clock"></div>
+            </div>
+        </div>
+
+    </div>
+
+    <script type="module" src="resources/js/main.js?v=20260215-1"></script>
+
+    <script type="module" src="resources/js/bootLogin.js?v=20260215-1"></script>
+
+</body>
+
+</html>
+

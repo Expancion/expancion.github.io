@@ -146,6 +146,36 @@
   pointer-events: none;
 }
 
+.nexus-launch-card {
+  min-height: 340px;
+}
+
+.nexus-launch-head {
+  justify-content: center;
+}
+
+.nexus-launch-body {
+  flex: 1;
+  min-height: 0;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  gap: 14px;
+}
+
+.nexus-launch-text {
+  max-width: 360px;
+  color: #cfeee0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.nexus-launch-btn {
+  min-width: 220px;
+  justify-content: center;
+}
+
 .terminal-bar {
   display: flex;
   align-items: center;

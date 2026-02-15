@@ -16,6 +16,7 @@ const translations = {
             learning: "Co se učím",
             references: "Doporučení",
             languages: "Jazyky",
+            nexus: "NexusOS",
         },
         hero: {
             subtitle: "Virtuální CV",
@@ -24,6 +25,9 @@ const translations = {
             ctaContact: "Kontakt",
             ctaDownloadLink: "resources/files/cv-cz.pdf",
             hint: "napi&scaron; <span class='cmd'>help</span>",
+            nexusTitle: "Nexus OS",
+            nexusHint: "Spustit plnou NexusOS desktop experience.",
+            nexusLaunch: "Spustit NexusOS",
         },
         about: {
             title: "O mně",
@@ -452,6 +456,7 @@ const translations = {
             learning: "What I'm learning",
             references: "Recommendations",
             languages: "Languages",
+            nexus: "NexusOS",
         },
         hero: {
             subtitle: "Virtual CV",
@@ -460,6 +465,9 @@ const translations = {
             ctaContact: "Contact",
             ctaDownloadLink: "resources/files/cv-en.pdf",
             hint: "type <span class='cmd'>help</span>",
+            nexusTitle: "Nexus OS",
+            nexusHint: "Launch the full NexusOS desktop experience.",
+            nexusLaunch: "Launch NexusOS",
         },
         about: {
             title: "About",
